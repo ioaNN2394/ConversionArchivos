@@ -36,9 +36,9 @@
     h1 { font-size: 2rem; }
     h2 { font-size: 1.75rem; }
     
-    .ad-container--top {
-        display: none; /* Ocultar sidebar ad en móvil si es intrusivo */
-    }
+    /* .ad-container--top {
+        display: none; 
+    } */
 }
 
 /* Tablet (769px - 1024px) */
