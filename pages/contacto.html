@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - Convertidor Pro</title>
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/componentes.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <a href="../index.html" style="font-weight: 800; font-size: 1.5rem; color: var(--color-primary);">ConvertidorPro</a>
+            <button class="mobile-menu-btn">☰</button>
+            <nav class="nav-menu">
+                <ul class="nav-list">
+                    <li><a href="../index.html" class="nav-link">Inicio</a></li>
+                    <li><a href="herramienta.html" class="nav-link">Herramienta</a></li>
+                    <li><a href="contacto.html" class="nav-link active">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container page-layout">
+        <main>
+            <h1>Contáctanos</h1>
+            <p>¿Tienes alguna pregunta o sugerencia? Estamos aquí para ayudarte.</p>
+
+            <div class="card" style="max-width: 600px;">
+                <form action="#" method="POST">
+                    <div class="form-group">
+                        <label for="nombre" class="form-label">Nombre</label>
+                        <input type="text" id="nombre" name="nombre" class="form-input" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email" class="form-label">Correo Electrónico</label>
+                        <input type="email" id="email" name="email" class="form-input" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="asunto" class="form-label">Asunto</label>
+                        <select id="asunto" name="asunto" class="form-input">
+                            <option value="general">Consulta General</option>
+                            <option value="soporte">Soporte Técnico</option>
+                            <option value="privacidad">Privacidad</option>
+                            <option value="publicidad">Publicidad</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="mensaje" class="form-label">Mensaje</label>
+                        <textarea id="mensaje" name="mensaje" rows="5" class="form-textarea" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn--primary">Enviar Mensaje</button>
+                </form>
+            </div>
+        </main>
+
+        <aside style="padding-top: var(--spacing-xl);">
+            <div class="card">
+                <h3>Información</h3>
+                <p><strong>Email:</strong> info@tudominio.com</p>
+                <p><strong>Horario:</strong> Lunes a Viernes, 9:00 - 18:00</p>
+                <p style="margin-top: 16px; font-size: 0.9rem; color: var(--color-text-light);">
+                    Este sitio es operado por [Tu Nombre/Empresa], comprometidos con ofrecer herramientas gratuitas de calidad.
+                </p>
+            </div>
+        </aside>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div style="text-align: center; padding: 24px 0; color: #94a3b8;">
+                &copy; 2025 ConvertidorPro.
+            </div>
+        </div>
+    </footer>
+    <script src="../js/navegacion.js"></script>
+</body>
+</html>
