@@ -3,9 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Comprime imágenes JPG online gratis. Reduce el peso de tus fotos hasta un 90% con control de calidad ajustable. Herramienta 100% segura, sin subir archivos.">
+    <meta name="keywords" content="comprimir JPG, reducir tamaño JPG, optimizar imágenes, comprimir fotos online, reducir peso imagen, compresor JPG gratis">
+    <meta name="author" content="ConvertidorPro">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Google AdSense -->
     <meta name="google-adsense-account" content="ca-pub-2207512229687784">
-    <meta name="description" content="Comprime imágenes JPG reduciendo su tamaño sin perder calidad. Herramienta online gratuita.">
-    <title>Compresor JPG - Convertidor Pro</title>
+    
+    <title>Comprimir JPG Online Gratis - Reduce Peso sin Perder Calidad | ConvertidorPro</title>
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://ads2025-e4539.web.app/jpg-compressor.html">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ads2025-e4539.web.app/jpg-compressor.html">
+    <meta property="og:title" content="Comprimir JPG Online Gratis - ConvertidorPro">
+    <meta property="og:description" content="Comprime imágenes JPG reduciendo hasta un 90% el tamaño sin perder calidad visible.">
+    <meta property="og:image" content="https://ads2025-e4539.web.app/assets/images/og-compressor.png">
+    <meta property="og:locale" content="es_ES">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Comprimir JPG Online Gratis">
+    <meta name="twitter:description" content="Comprime imágenes JPG online reduciendo el peso hasta un 90%.">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,6 +39,7 @@
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/layout.css">
     <link rel="stylesheet" href="css/componentes.css">
+    <link rel="stylesheet" href="css/converters.css">
     <link rel="stylesheet" href="css/responsive.css">
     
     <!-- Google AdSense -->
@@ -46,16 +71,66 @@
                 <span style="color: #94a3b8; font-size: 0.8rem;">Publicidad</span>
             </div>
 
-            <div class="card" style="text-align: center; padding: 60px 20px; margin: 32px 0; border-style: dashed; border-width: 2px;">
-                <div style="margin-bottom: 24px;">
-                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-primary); margin: 0 auto;">
+            <!-- Mensaje de privacidad/estado -->
+            <div id="message-area" class="message-area"></div>
+
+            <!-- Input de archivo (fuera del drop-zone para evitar conflictos de DOM) -->
+            <input type="file" id="file-input" accept="image/*" class="file-input-hidden" style="display: none;">
+
+            <!-- Zona de carga -->
+            <div class="card drop-zone" id="drop-zone">
+                <div class="drop-zone-icon">
+                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                         <polyline points="7 10 12 15 17 10"></polyline>
                         <line x1="12" y1="15" x2="12" y2="3"></line>
                     </svg>
                 </div>
-                <h2 style="font-size: 1.5rem;">Carga tu imagen JPG</h2>
-                <button class="btn btn--primary" disabled>Comprimir (Próximamente)</button>
+                <p class="drop-zone-text">Arrastra tu imagen JPG aquí</p>
+                <button class="btn btn--primary" id="select-btn">Seleccionar Archivo</button>
+                <p class="drop-zone-hint">Solo archivos JPG/JPEG • Máximo 10 MB</p>
+            </div>
+
+            <!-- Loader -->
+            <div id="loader" class="loader">
+                <div class="loader-spinner"></div>
+            </div>
+
+            <!-- Control de calidad -->
+            <div id="quality-control" class="control-group">
+                <label class="control-label">Nivel de compresión:</label>
+                <div style="display: flex; align-items: center; gap: 12px;">
+                    <span style="font-size: 0.8rem;">Más pequeño</span>
+                    <input type="range" id="quality-slider" class="quality-slider" min="10" max="100" value="80">
+                    <span style="font-size: 0.8rem;">Mayor calidad</span>
+                    <span id="quality-value" class="quality-value">80%</span>
+                </div>
+            </div>
+
+            <!-- Comparación de tamaños -->
+            <div id="size-comparison" class="size-comparison"></div>
+
+            <!-- Contenedor de previews -->
+            <div id="preview-container" class="preview-container">
+                <div class="preview-row">
+                    <div class="preview-box">
+                        <h3>Original</h3>
+                        <img id="original-preview" class="preview-image" alt="Original">
+                        <div id="original-info" class="preview-info"></div>
+                    </div>
+                    <div class="preview-box">
+                        <h3>Comprimido</h3>
+                        <img id="result-preview" class="preview-image" alt="Comprimido">
+                        <div id="result-info" class="preview-info"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Botones de acción -->
+            <div class="action-buttons">
+                <button class="btn btn--primary" id="compress-btn">Comprimir</button>
+                <button class="btn btn--primary" id="download-btn">Descargar</button>
+                <button class="btn btn--secondary" id="reset-btn">Nueva Compresión</button>
             </div>
 
             <section style="margin-top: 40px;">
@@ -132,7 +207,13 @@
     </footer>
 
     <script src="js/navegacion.js"></script>
-    <script src="js/main.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/jpg-compressor.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            JpgCompressor.init();
+        });
+    </script>
     <script type="module" src="js/analytics.js"></script>
 </body>
 </html>

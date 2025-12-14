@@ -3,9 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Convierte imágenes PNG a JPG gratis y online. Reduce el tamaño de archivo hasta un 80% manteniendo excelente calidad. 100% seguro, sin subir archivos.">
+    <meta name="keywords" content="PNG a JPG, convertir PNG JPG, reducir tamaño imagen, comprimir PNG, conversor online gratis, convertidor imágenes">
+    <meta name="author" content="ConvertidorPro">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Google AdSense -->
     <meta name="google-adsense-account" content="ca-pub-2207512229687784">
-    <meta name="description" content="Convierte imágenes PNG a JPG gratis y online. Reduce el tamaño sin perder calidad.">
-    <title>PNG a JPG - Convertidor Pro</title>
+    
+    <title>Convertir PNG a JPG Online Gratis - Reduce Tamaño | ConvertidorPro</title>
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://ads2025-e4539.web.app/png-jpg.html">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ads2025-e4539.web.app/png-jpg.html">
+    <meta property="og:title" content="Convertir PNG a JPG Online Gratis - ConvertidorPro">
+    <meta property="og:description" content="Convierte imágenes PNG a JPG gratis. Reduce el tamaño hasta un 80% sin perder calidad.">
+    <meta property="og:image" content="https://ads2025-e4539.web.app/assets/images/og-png-jpg.png">
+    <meta property="og:locale" content="es_ES">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Convertir PNG a JPG Online Gratis">
+    <meta name="twitter:description" content="Convierte imágenes PNG a JPG gratis y online reduciendo el tamaño.">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,6 +39,7 @@
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/layout.css">
     <link rel="stylesheet" href="css/componentes.css">
+    <link rel="stylesheet" href="css/converters.css">
     <link rel="stylesheet" href="css/responsive.css">
     
     <!-- Google AdSense -->
@@ -46,16 +71,68 @@
                 <span style="color: #94a3b8; font-size: 0.8rem;">Publicidad</span>
             </div>
 
-            <div class="card" style="text-align: center; padding: 60px 20px; margin: 32px 0; border-style: dashed; border-width: 2px;">
-                <div style="margin-bottom: 24px;">
-                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-primary); margin: 0 auto;">
+            <!-- Mensaje de privacidad/estado -->
+            <div id="message-area" class="message-area"></div>
+
+            <!-- Input de archivo (fuera del drop-zone para evitar conflictos de DOM) -->
+            <input type="file" id="file-input" accept="image/png" class="file-input-hidden" style="display: none;">
+
+            <!-- Zona de carga -->
+            <div class="card drop-zone" id="drop-zone">
+                <div class="drop-zone-icon">
+                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
                         <circle cx="8.5" cy="8.5" r="1.5"></circle>
                         <polyline points="21 15 16 10 5 21"></polyline>
                     </svg>
                 </div>
-                <h2 style="font-size: 1.5rem;">Carga tu imagen PNG</h2>
-                <button class="btn btn--primary" disabled>Convertir (Próximamente)</button>
+                <p class="drop-zone-text">Arrastra tu imagen PNG aquí</p>
+                <button class="btn btn--primary" id="select-btn">Seleccionar Archivo</button>
+                <p class="drop-zone-hint">Solo archivos PNG • Máximo 10 MB</p>
+            </div>
+
+            <!-- Loader -->
+            <div id="loader" class="loader">
+                <div class="loader-spinner"></div>
+            </div>
+
+            <!-- Control de calidad -->
+            <div id="quality-control" class="control-group">
+                <label class="control-label">Calidad de compresión:</label>
+                <div style="display: flex; align-items: center; gap: 12px;">
+                    <input type="range" id="quality-slider" class="quality-slider" min="10" max="100" value="80">
+                    <span id="quality-value" class="quality-value">80%</span>
+                </div>
+            </div>
+
+            <!-- Color de fondo -->
+            <div id="bg-color-control" class="control-group">
+                <label class="control-label">Color de fondo (para transparencias):</label>
+                <input type="color" id="bg-color-input" class="color-input" value="#ffffff">
+                <span style="font-size: 0.8rem; color: var(--color-text-light);">Las áreas transparentes se rellenarán con este color</span>
+            </div>
+
+            <!-- Contenedor de previews -->
+            <div id="preview-container" class="preview-container">
+                <div class="preview-row">
+                    <div class="preview-box">
+                        <h3>Original (PNG)</h3>
+                        <img id="original-preview" class="preview-image" alt="Original">
+                        <div id="original-info" class="preview-info"></div>
+                    </div>
+                    <div class="preview-box">
+                        <h3>Resultado (JPG)</h3>
+                        <img id="result-preview" class="preview-image" alt="Resultado">
+                        <div id="result-info" class="preview-info"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Botones de acción -->
+            <div class="action-buttons">
+                <button class="btn btn--primary" id="convert-btn">Convertir a JPG</button>
+                <button class="btn btn--primary" id="download-btn">Descargar JPG</button>
+                <button class="btn btn--secondary" id="reset-btn">Nueva Conversión</button>
             </div>
 
             <section style="margin-top: 40px;">
@@ -109,7 +186,13 @@
     </footer>
 
     <script src="js/navegacion.js"></script>
-    <script src="js/main.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/png-jpg-converter.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            PngJpgConverter.init('png-to-jpg');
+        });
+    </script>
     <script type="module" src="js/analytics.js"></script>
 </body>
 </html>

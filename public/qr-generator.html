@@ -3,9 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Generador de códigos QR online gratis. Crea QRs personalizados para URLs, texto, WiFi y más. Descarga en PNG de alta calidad. 100% gratuito.">
+    <meta name="keywords" content="generador QR, crear código QR, QR gratis online, QR personalizado, generar QR URL, código QR PNG">
+    <meta name="author" content="ConvertidorPro">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Google AdSense -->
     <meta name="google-adsense-account" content="ca-pub-2207512229687784">
-    <meta name="description" content="Generador de códigos QR gratis y online. Crea QRs para URLs, texto y más.">
-    <title>Generador QR - Convertidor Pro</title>
+    
+    <title>Generador de Códigos QR Online Gratis - Crear QR | ConvertidorPro</title>
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://ads2025-e4539.web.app/qr-generator.html">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ads2025-e4539.web.app/qr-generator.html">
+    <meta property="og:title" content="Generador de Códigos QR Online Gratis - ConvertidorPro">
+    <meta property="og:description" content="Crea códigos QR personalizados para URLs, texto y más. Descarga en PNG gratis.">
+    <meta property="og:image" content="https://ads2025-e4539.web.app/assets/images/og-qr.png">
+    <meta property="og:locale" content="es_ES">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Generador de Códigos QR Online Gratis">
+    <meta name="twitter:description" content="Crea códigos QR personalizados gratis para URLs, texto y más.">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,6 +39,7 @@
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/layout.css">
     <link rel="stylesheet" href="css/componentes.css">
+    <link rel="stylesheet" href="css/converters.css">
     <link rel="stylesheet" href="css/responsive.css">
     
     <!-- Google AdSense -->
@@ -46,18 +71,71 @@
                 <span style="color: #94a3b8; font-size: 0.8rem;">Publicidad</span>
             </div>
 
-            <div class="card" style="text-align: center; padding: 60px 20px; margin: 32px 0; border-style: dashed; border-width: 2px;">
-                <div style="margin-bottom: 24px;">
-                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-primary); margin: 0 auto;">
-                        <rect x="3" y="3" width="7" height="7"></rect>
-                        <rect x="14" y="3" width="7" height="7"></rect>
-                        <rect x="14" y="14" width="7" height="7"></rect>
-                        <rect x="3" y="14" width="7" height="7"></rect>
-                    </svg>
+            <!-- Mensaje de privacidad/estado -->
+            <div id="message-area" class="message-area"></div>
+
+            <!-- Área de entrada de texto -->
+            <div class="card" style="padding: 24px; margin: 24px 0;">
+                <div class="text-area-container">
+                    <div class="text-area-header">
+                        <label class="text-area-label" for="qr-text-input">URL o texto para el código QR:</label>
+                        <span id="char-count" class="char-count">0 / 2953</span>
+                    </div>
+                    <textarea id="qr-text-input" class="text-area" placeholder="Escribe o pega tu URL o texto aquí..." rows="3"></textarea>
                 </div>
-                <h2 style="font-size: 1.5rem;">Ingresa tu URL o Texto</h2>
-                <button class="btn btn--primary" disabled>Generar QR (Próximamente)</button>
+
+                <!-- Opciones de QR -->
+                <div class="qr-options">
+                    <div class="qr-option">
+                        <label for="qr-size">Tamaño:</label>
+                        <select id="qr-size">
+                            <option value="small">Pequeño (128px)</option>
+                            <option value="medium" selected>Mediano (256px)</option>
+                            <option value="large">Grande (512px)</option>
+                        </select>
+                    </div>
+                    <div class="qr-option">
+                        <label for="qr-fg-color">Color del código:</label>
+                        <input type="color" id="qr-fg-color" value="#000000">
+                    </div>
+                    <div class="qr-option">
+                        <label for="qr-bg-color">Color de fondo:</label>
+                        <input type="color" id="qr-bg-color" value="#ffffff">
+                    </div>
+                </div>
+
+                <button class="btn btn--primary" id="generate-btn" disabled style="width: 100%; margin-top: 16px;">Generar Código QR</button>
             </div>
+
+            <!-- Contenedor del QR generado -->
+            <div id="qr-container" class="qr-container">
+                <h3 style="margin-bottom: 16px;">Tu código QR:</h3>
+                <div id="qr-result" class="qr-result"></div>
+            </div>
+
+            <!-- Botones de acción -->
+            <div class="action-buttons" style="justify-content: center;">
+                <button class="btn btn--primary" id="download-btn">Descargar PNG</button>
+                <button class="btn btn--secondary" id="reset-btn">Limpiar</button>
+            </div>
+
+            <section style="margin-top: 40px;">
+                <h2>Usos comunes de códigos QR</h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-top: 24px;">
+                    <article class="card">
+                        <h3>🔗 Enlaces web</h3>
+                        <p>Comparte URLs de tu sitio web, redes sociales o contenido online.</p>
+                    </article>
+                    <article class="card">
+                        <h3>📞 Contacto</h3>
+                        <p>Comparte tu número de teléfono, email o información de contacto.</p>
+                    </article>
+                    <article class="card">
+                        <h3>🏢 Negocios</h3>
+                        <p>Menús digitales, tarjetas de presentación, promociones y más.</p>
+                    </article>
+                </div>
+            </section>
         </main>
 
         <aside style="padding-top: var(--spacing-xl);">
@@ -92,7 +170,13 @@
     </footer>
 
     <script src="js/navegacion.js"></script>
-    <script src="js/main.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/qr-generator.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            QrGenerator.init();
+        });
+    </script>
     <script type="module" src="js/analytics.js"></script>
 </body>
 </html>

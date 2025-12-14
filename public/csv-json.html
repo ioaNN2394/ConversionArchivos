@@ -3,9 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Convierte archivos CSV a JSON y JSON a CSV online gratis. Conversión bidireccional instantánea para desarrolladores y analistas de datos. 100% seguro.">
+    <meta name="keywords" content="CSV a JSON, JSON a CSV, convertir CSV JSON, conversor datos online, transformar CSV, exportar JSON">
+    <meta name="author" content="ConvertidorPro">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Google AdSense -->
     <meta name="google-adsense-account" content="ca-pub-2207512229687784">
-    <meta name="description" content="Convierte archivos CSV a JSON y viceversa gratis y online.">
-    <title>CSV a JSON - Convertidor Pro</title>
+    
+    <title>Convertir CSV a JSON y JSON a CSV Online Gratis | ConvertidorPro</title>
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://ads2025-e4539.web.app/csv-json.html">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ads2025-e4539.web.app/csv-json.html">
+    <meta property="og:title" content="Convertir CSV a JSON Online Gratis - ConvertidorPro">
+    <meta property="og:description" content="Convierte archivos CSV a JSON y viceversa gratis. Ideal para desarrolladores.">
+    <meta property="og:image" content="https://ads2025-e4539.web.app/assets/images/og-csv-json.png">
+    <meta property="og:locale" content="es_ES">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Convertir CSV a JSON Online Gratis">
+    <meta name="twitter:description" content="Convierte archivos CSV a JSON y JSON a CSV online gratis.">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,6 +39,7 @@
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/layout.css">
     <link rel="stylesheet" href="css/componentes.css">
+    <link rel="stylesheet" href="css/converters.css">
     <link rel="stylesheet" href="css/responsive.css">
     
     <!-- Google AdSense -->
@@ -46,19 +71,98 @@
                 <span style="color: #94a3b8; font-size: 0.8rem;">Publicidad</span>
             </div>
 
-            <div class="card" style="text-align: center; padding: 60px 20px; margin: 32px 0; border-style: dashed; border-width: 2px;">
-                <div style="margin-bottom: 24px;">
-                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-primary); margin: 0 auto;">
+            <!-- Mensaje de privacidad/estado -->
+            <div id="message-area" class="message-area"></div>
+
+            <!-- Indicador de modo -->
+            <span id="mode-indicator" class="mode-indicator"></span>
+
+            <!-- Input de archivo (fuera del drop-zone para evitar conflictos de DOM) -->
+            <input type="file" id="file-input" accept=".csv,.json,text/csv,application/json" class="file-input-hidden" style="display: none;">
+
+            <!-- Zona de carga -->
+            <div class="card drop-zone" id="drop-zone">
+                <div class="drop-zone-icon">
+                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                         <polyline points="14 2 14 8 20 8"></polyline>
                         <line x1="16" y1="13" x2="8" y2="13"></line>
                         <line x1="16" y1="17" x2="8" y2="17"></line>
-                        <polyline points="10 9 9 9 8 9"></polyline>
                     </svg>
                 </div>
-                <h2 style="font-size: 1.5rem;">Sube tu archivo CSV o JSON</h2>
-                <button class="btn btn--primary" disabled>Seleccionar Archivo (Próximamente)</button>
+                <p class="drop-zone-text">Arrastra tu archivo CSV o JSON aquí</p>
+                <button class="btn btn--primary" id="select-btn">Seleccionar Archivo</button>
+                <p class="drop-zone-hint">Archivos CSV o JSON • Máximo 10 MB</p>
             </div>
+
+            <div class="or-separator"><span>o pega tu contenido</span></div>
+
+            <!-- Área de texto para pegar -->
+            <div class="text-area-container">
+                <textarea id="text-input" class="text-area" placeholder="Pega aquí tu CSV o JSON..."></textarea>
+            </div>
+
+            <!-- Loader -->
+            <div id="loader" class="loader">
+                <div class="loader-spinner"></div>
+            </div>
+
+            <!-- Opción de cabecera para CSV -->
+            <div style="margin: 16px 0; display: none;">
+                <label class="checkbox-label">
+                    <input type="checkbox" id="header-option" checked>
+                    Primera fila como encabezados
+                </label>
+            </div>
+
+            <!-- Info del archivo -->
+            <div id="input-info" class="preview-info"></div>
+
+            <!-- Contenedor de previews -->
+            <div id="preview-container" class="preview-container">
+                <h3>Vista previa de entrada:</h3>
+                <pre id="input-preview" class="code-preview"></pre>
+                
+                <div id="table-preview" style="display: none; overflow-x: auto;"></div>
+            </div>
+
+            <!-- Botones de acción -->
+            <div class="action-buttons">
+                <button class="btn btn--primary" id="convert-btn">Convertir</button>
+                <button class="btn btn--secondary" id="reset-btn">Limpiar</button>
+            </div>
+
+            <!-- Resultado -->
+            <div class="text-area-container" style="margin-top: 24px;">
+                <div class="text-area-header">
+                    <span class="text-area-label">Resultado:</span>
+                </div>
+                <pre id="output-preview" class="code-preview" style="display: none;"></pre>
+            </div>
+
+            <!-- Botones de resultado -->
+            <div class="action-buttons">
+                <button class="btn btn--primary" id="copy-btn" style="display: none;">Copiar al portapapeles</button>
+                <button class="btn btn--primary" id="download-btn" style="display: none;">Descargar</button>
+            </div>
+
+            <section style="margin-top: 40px;">
+                <h2>¿Cómo funciona?</h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-top: 24px;">
+                    <article class="card">
+                        <h3>CSV → JSON</h3>
+                        <p>Convierte datos tabulares a formato JSON estructurado, ideal para APIs y aplicaciones web.</p>
+                    </article>
+                    <article class="card">
+                        <h3>JSON → CSV</h3>
+                        <p>Transforma objetos JSON en formato CSV para hojas de cálculo y análisis de datos.</p>
+                    </article>
+                    <article class="card">
+                        <h3>Autodetección</h3>
+                        <p>El conversor detecta automáticamente el formato de entrada y ofrece la conversión adecuada.</p>
+                    </article>
+                </div>
+            </section>
         </main>
 
         <aside style="padding-top: var(--spacing-xl);">
@@ -93,7 +197,13 @@
     </footer>
 
     <script src="js/navegacion.js"></script>
-    <script src="js/main.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/csv-json-converter.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            CsvJsonConverter.init();
+        });
+    </script>
     <script type="module" src="js/analytics.js"></script>
 </body>
 </html>

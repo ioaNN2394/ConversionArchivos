@@ -3,9 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Convierte imágenes JPG y PNG a PDF online gratis. Ideal para documentos, trámites y escaneos. Orientación vertical u horizontal. 100% seguro.">
+    <meta name="keywords" content="imagen a PDF, JPG a PDF, PNG a PDF, convertir foto PDF, crear PDF imagen, conversor PDF online gratis">
+    <meta name="author" content="ConvertidorPro">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Google AdSense -->
     <meta name="google-adsense-account" content="ca-pub-2207512229687784">
-    <meta name="description" content="Convierte imágenes (JPG, PNG) a PDF gratis y online. Perfecto para documentos y trámites.">
-    <title>Imagen a PDF - Convertidor Pro</title>
+    
+    <title>Convertir Imagen a PDF Online Gratis - JPG, PNG a PDF | ConvertidorPro</title>
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://ads2025-e4539.web.app/imagen-pdf.html">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ads2025-e4539.web.app/imagen-pdf.html">
+    <meta property="og:title" content="Convertir Imagen a PDF Online Gratis - ConvertidorPro">
+    <meta property="og:description" content="Convierte imágenes JPG y PNG a PDF gratis. Ideal para documentos y trámites.">
+    <meta property="og:image" content="https://ads2025-e4539.web.app/assets/images/og-pdf.png">
+    <meta property="og:locale" content="es_ES">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Convertir Imagen a PDF Online Gratis">
+    <meta name="twitter:description" content="Convierte imágenes JPG y PNG a PDF online gratis.">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,6 +39,7 @@
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/layout.css">
     <link rel="stylesheet" href="css/componentes.css">
+    <link rel="stylesheet" href="css/converters.css">
     <link rel="stylesheet" href="css/responsive.css">
     
     <!-- Google AdSense -->
@@ -46,15 +71,53 @@
                 <span style="color: #94a3b8; font-size: 0.8rem;">Publicidad</span>
             </div>
 
-            <div class="card" style="text-align: center; padding: 60px 20px; margin: 32px 0; border-style: dashed; border-width: 2px;">
-                <div style="margin-bottom: 24px;">
-                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-primary); margin: 0 auto;">
+            <!-- Mensaje de privacidad/estado -->
+            <div id="message-area" class="message-area"></div>
+
+            <!-- Input de archivo (fuera del drop-zone para evitar conflictos de DOM) -->
+            <input type="file" id="file-input" accept="image/*" class="file-input-hidden" multiple style="display: none;">
+
+            <!-- Zona de carga -->
+            <div class="card drop-zone" id="drop-zone">
+                <div class="drop-zone-icon">
+                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                         <polyline points="14 2 14 8 20 8"></polyline>
                     </svg>
                 </div>
-                <h2 style="font-size: 1.5rem;">Carga tus imágenes</h2>
-                <button class="btn btn--primary" disabled>Convertir (Próximamente)</button>
+                <p class="drop-zone-text">Arrastra tus imágenes aquí</p>
+                <button class="btn btn--primary" id="select-btn">Seleccionar Imágenes</button>
+                <p class="drop-zone-hint">JPG, PNG, WebP • Máximo 5 archivos • 10 MB cada uno</p>
+            </div>
+
+            <!-- Loader -->
+            <div id="loader" class="loader">
+                <div class="loader-spinner"></div>
+            </div>
+
+            <!-- Conteo de archivos -->
+            <p id="file-count" class="file-count"></p>
+
+            <!-- Selector de orientación -->
+            <div id="orientation-select" class="orientation-select">
+                <label class="control-label">Orientación de página:</label>
+                <select id="orientation-select">
+                    <option value="portrait">Vertical (Retrato)</option>
+                    <option value="landscape">Horizontal (Paisaje)</option>
+                </select>
+            </div>
+
+            <!-- Contenedor de previews -->
+            <div id="preview-container" class="preview-container">
+                <h3>Imágenes seleccionadas:</h3>
+                <div id="preview-grid" class="preview-grid"></div>
+            </div>
+
+            <!-- Botones de acción -->
+            <div class="action-buttons">
+                <button class="btn btn--primary" id="convert-btn">Crear PDF</button>
+                <button class="btn btn--primary" id="download-btn">Descargar PDF</button>
+                <button class="btn btn--secondary" id="reset-btn">Limpiar</button>
             </div>
 
             <section style="margin-top: 40px;">
@@ -131,7 +194,13 @@
     </footer>
 
     <script src="js/navegacion.js"></script>
-    <script src="js/main.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/image-to-pdf.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            ImageToPdfConverter.init();
+        });
+    </script>
     <script type="module" src="js/analytics.js"></script>
 </body>
 </html>

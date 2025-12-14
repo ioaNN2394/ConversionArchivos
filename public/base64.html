@@ -3,9 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Codifica y decodifica Base64 online gratis. Conversión instantánea de texto a Base64 y viceversa. Herramienta para desarrolladores 100% segura.">
+    <meta name="keywords" content="Base64 encoder, Base64 decoder, codificar Base64, decodificar Base64, conversor Base64 online, texto a Base64">
+    <meta name="author" content="ConvertidorPro">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Google AdSense -->
     <meta name="google-adsense-account" content="ca-pub-2207512229687784">
-    <meta name="description" content="Codifica y decodifica Base64 gratis y online.">
-    <title>Base64 Encoder/Decoder - Convertidor Pro</title>
+    
+    <title>Codificador y Decodificador Base64 Online Gratis | ConvertidorPro</title>
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://ads2025-e4539.web.app/base64.html">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ads2025-e4539.web.app/base64.html">
+    <meta property="og:title" content="Codificador Base64 Online Gratis - ConvertidorPro">
+    <meta property="og:description" content="Codifica y decodifica Base64 online gratis. Herramienta para desarrolladores.">
+    <meta property="og:image" content="https://ads2025-e4539.web.app/assets/images/og-base64.png">
+    <meta property="og:locale" content="es_ES">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Codificador Base64 Online Gratis">
+    <meta name="twitter:description" content="Codifica y decodifica Base64 online gratis.">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,6 +39,7 @@
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/layout.css">
     <link rel="stylesheet" href="css/componentes.css">
+    <link rel="stylesheet" href="css/converters.css">
     <link rel="stylesheet" href="css/responsive.css">
     
     <!-- Google AdSense -->
@@ -46,16 +71,68 @@
                 <span style="color: #94a3b8; font-size: 0.8rem;">Publicidad</span>
             </div>
 
-            <div class="card" style="text-align: center; padding: 60px 20px; margin: 32px 0; border-style: dashed; border-width: 2px;">
-                <div style="margin-bottom: 24px;">
-                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-primary); margin: 0 auto;">
-                        <polyline points="16 18 22 12 16 6"></polyline>
-                        <polyline points="8 6 2 12 8 18"></polyline>
-                    </svg>
+            <!-- Mensaje de privacidad/estado -->
+            <div id="message-area" class="message-area"></div>
+
+            <!-- Contenedor principal Base64 -->
+            <div class="card" style="padding: 24px; margin: 24px 0;">
+                <div class="base64-container">
+                    <!-- Área de entrada -->
+                    <div class="text-area-container">
+                        <div class="text-area-header">
+                            <label class="text-area-label" for="input-text">Texto de entrada:</label>
+                            <span id="input-char-count" class="char-count">0 caracteres</span>
+                        </div>
+                        <textarea id="input-text" class="text-area" placeholder="Escribe o pega texto aquí..." rows="8"></textarea>
+                    </div>
+
+                    <!-- Área de salida -->
+                    <div class="text-area-container">
+                        <div class="text-area-header">
+                            <label class="text-area-label" for="output-text">Resultado:</label>
+                            <span id="output-char-count" class="char-count">0 caracteres</span>
+                        </div>
+                        <textarea id="output-text" class="text-area" placeholder="El resultado aparecerá aquí..." rows="8" readonly></textarea>
+                    </div>
                 </div>
-                <h2 style="font-size: 1.5rem;">Ingresa tu texto o archivo</h2>
-                <button class="btn btn--primary" disabled>Procesar (Próximamente)</button>
+
+                <!-- Botones de acción -->
+                <div class="base64-actions">
+                    <button class="btn btn--primary" id="encode-btn">
+                        Texto → Base64
+                    </button>
+                    <button class="btn btn--primary" id="decode-btn">
+                        Base64 → Texto
+                    </button>
+                    <button class="btn btn--secondary" id="swap-btn">
+                        ⇄ Intercambiar
+                    </button>
+                    <button class="btn btn--secondary" id="copy-btn">
+                        Copiar resultado
+                    </button>
+                    <button class="btn btn--secondary" id="clear-btn">
+                        Limpiar
+                    </button>
+                </div>
             </div>
+
+            <section style="margin-top: 40px;">
+                <h2>¿Qué es Base64?</h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-top: 24px;">
+                    <article class="card">
+                        <h3>🔒 Codificación segura</h3>
+                        <p>Base64 convierte datos binarios en texto ASCII, permitiendo transmitirlos de forma segura.</p>
+                    </article>
+                    <article class="card">
+                        <h3>📧 Email y web</h3>
+                        <p>Ampliamente usado en emails, URLs, y para incrustar imágenes en HTML/CSS.</p>
+                    </article>
+                    <article class="card">
+                        <h3>🔄 Bidireccional</h3>
+                        <p>Puedes codificar texto a Base64 y decodificar Base64 a texto original sin pérdida.</p>
+                    </article>
+                </div>
+            </section>
         </main>
 
         <aside style="padding-top: var(--spacing-xl);">
@@ -90,7 +167,13 @@
     </footer>
 
     <script src="js/navegacion.js"></script>
-    <script src="js/main.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/base64-converter.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            Base64Converter.init();
+        });
+    </script>
     <script type="module" src="js/analytics.js"></script>
 </body>
 </html>

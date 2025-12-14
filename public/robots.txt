@@ -1,0 +1,13 @@
+# Robots.txt para ConvertidorPro
+# https://ads2025-e4539.web.app
+
+User-agent: *
+Allow: /
+
+# Bloquear carpetas privadas o de administración
+Disallow: /admin
+Disallow: /private
+Disallow: /__/
+
+# Referencia al sitemap
+Sitemap: https://ads2025-e4539.web.app/sitemap.xml
