@@ -49,8 +49,16 @@
             <h1>Contáctanos</h1>
             <p>¿Tienes alguna pregunta o sugerencia? Estamos aquí para ayudarte.</p>
 
+            <!-- Contenedor para mensajes de estado (éxito/error) -->
+            <div id="form-message" style="display: none; padding: 15px; margin-bottom: 20px; border-radius: 8px;"></div>
+
             <div class="card" style="max-width: 600px;">
-                <form action="#" method="POST">
+                <!-- Agregamos id="contact-form" y quitamos action/method -->
+                <form id="contact-form">
+                    <!-- Configuración oculta para FormSubmit -->
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_template" value="table">
+                    
                     <div class="form-group">
                         <label for="nombre" class="form-label">Nombre</label>
                         <input type="text" id="nombre" name="nombre" class="form-input" required>
@@ -64,10 +72,10 @@
                     <div class="form-group">
                         <label for="asunto" class="form-label">Asunto</label>
                         <select id="asunto" name="asunto" class="form-input">
-                            <option value="general">Consulta General</option>
-                            <option value="soporte">Soporte Técnico</option>
-                            <option value="privacidad">Privacidad</option>
-                            <option value="publicidad">Publicidad</option>
+                            <option value="Consulta General">Consulta General</option>
+                            <option value="Soporte Técnico">Soporte Técnico</option>
+                            <option value="Privacidad">Privacidad</option>
+                            <option value="Publicidad">Publicidad</option>
                         </select>
                     </div>
                     
@@ -76,7 +84,7 @@
                         <textarea id="mensaje" name="mensaje" rows="5" class="form-textarea" required></textarea>
                     </div>
                     
-                    <button type="submit" class="btn btn--primary">Enviar Mensaje</button>
+                    <button type="submit" id="submit-btn" class="btn btn--primary">Enviar Mensaje</button>
                 </form>
             </div>
         </main>
@@ -84,10 +92,10 @@
         <aside style="padding-top: var(--spacing-xl);">
             <div class="card">
                 <h3>Información</h3>
-                <p><strong>Email:</strong> info@tudominio.com</p>
+                <p><strong>Email:</strong> fede.barbo86@gmail.com</p>
                 <p><strong>Horario:</strong> Lunes a Viernes, 9:00 - 18:00</p>
                 <p style="margin-top: 16px; font-size: 0.9rem; color: var(--color-text-light);">
-                    Este sitio es operado por [Tu Nombre/Empresa], comprometidos con ofrecer herramientas gratuitas de calidad.
+                    Este sitio es operado por Federico B., comprometido con ofrecer herramientas gratuitas de calidad.
                 </p>
             </div>
         </aside>
@@ -101,6 +109,8 @@
         </div>
     </footer>
     <script src="../js/navegacion.js"></script>
+    <!-- Script del formulario de contacto -->
+    <script src="../js/contact.js"></script>
     <script type="module" src="../js/analytics.js"></script>
 </body>
 </html>
