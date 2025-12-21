@@ -1,62 +1,91 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Convierte archivos CSV a JSON y JSON a CSV online gratis. Conversión bidireccional instantánea para desarrolladores y analistas de datos. 100% seguro.">
-    <meta name="keywords" content="CSV a JSON, JSON a CSV, convertir CSV JSON, conversor datos online, transformar CSV, exportar JSON">
-    <meta name="author" content="ConvertidorPro">
+    <meta name="description"
+        content="Convierte archivos CSV a JSON y JSON a CSV online gratis. Conversión bidireccional instantánea para desarrolladores y analistas de datos. 100% seguro.">
+    <meta name="keywords"
+        content="CSV a JSON, JSON a CSV, convertir CSV JSON, conversor datos online, transformar CSV, exportar JSON">
+    <meta name="author" content="Pro Conversion">
     <meta name="robots" content="index, follow">
-    
+
     <!-- Google AdSense -->
     <meta name="google-adsense-account" content="ca-pub-2207512229687784">
-    
-    <title>Convertir CSV a JSON y JSON a CSV Online Gratis | ConvertidorPro</title>
-    
+
+    <!-- HREFLANG -->
+    <link rel="alternate" hreflang="es" href="https://pro-conversion.com/csv-json?lng=es" />
+    <link rel="alternate" hreflang="en" href="https://pro-conversion.com/csv-json?lng=en" />
+    <link rel="alternate" hreflang="x-default" href="https://pro-conversion.com/csv-json" />
+
+    <title>Convertir CSV a JSON y JSON a CSV Online Gratis | Pro Conversion</title>
+
     <!-- Canonical URL -->
-    <link rel="canonical" href="https://ads2025-e4539.web.app/csv-json.html">
-    
+    <link rel="canonical" href="https://pro-conversion.com/csv-json.html">
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://ads2025-e4539.web.app/csv-json.html">
-    <meta property="og:title" content="Convertir CSV a JSON Online Gratis - ConvertidorPro">
-    <meta property="og:description" content="Convierte archivos CSV a JSON y viceversa gratis. Ideal para desarrolladores.">
-    <meta property="og:image" content="https://ads2025-e4539.web.app/assets/images/og-csv-json.png">
+    <meta property="og:url" content="https://pro-conversion.com/csv-json.html">
+    <meta property="og:title" content="Convertir CSV a JSON Online Gratis - Pro Conversion">
+    <meta property="og:description"
+        content="Convierte archivos CSV a JSON y viceversa gratis. Ideal para desarrolladores.">
+    <meta property="og:image" content="https://pro-conversion.com/assets/images/og-csv-json.png">
     <meta property="og:locale" content="es_ES">
-    
+
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Convertir CSV a JSON Online Gratis">
     <meta name="twitter:description" content="Convierte archivos CSV a JSON y JSON a CSV online gratis.">
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
+
     <link rel="stylesheet" href="css/variables.css">
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/layout.css">
     <link rel="stylesheet" href="css/componentes.css">
     <link rel="stylesheet" href="css/converters.css">
     <link rel="stylesheet" href="css/responsive.css">
-    
+
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2207512229687784"
-         crossorigin="anonymous"></script>
+        crossorigin="anonymous"></script>
+    <link rel="icon" href="assets/images/proConversionLogo.png" type="image/png">
+
+    <!-- i18next Libraries -->
+    <script src="https://unpkg.com/i18next/dist/umd/i18next.min.js"></script>
+    <script src="https://unpkg.com/i18next-http-backend/i18nextHttpBackend.min.js"></script>
+    <script
+        src="https://unpkg.com/i18next-browser-languagedetector/dist/umd/i18nextBrowserLanguageDetector.min.js"></script>
+
+    <!-- Prevent FOUC -->
+    <style>
+        body {
+            visibility: hidden;
+        }
+    </style>
 </head>
+
 <body>
     <script src="js/ad-visibility.js"></script>
     <header>
         <div class="container header-content">
-            <a href="/" style="font-weight: 800; font-size: 1.5rem; color: var(--color-primary);">ConvertidorPro</a>
+            <a href="/" style="font-weight: 800; font-size: 1.5rem; color: var(--color-primary);">Pro Conversion</a>
             <button class="mobile-menu-btn" aria-label="Abrir menú">☰</button>
             <nav class="nav-menu">
+                <select id="languageSwitcher" aria-label="Seleccionar idioma"
+                    style="margin-right: 15px; padding: 5px; border-radius: 4px;">
+                    <option value="es">Español</option>
+                    <option value="en">English</option>
+                </select>
                 <ul class="nav-list">
-                    <li><a href="/" class="nav-link">Inicio</a></li>
-                    <li><a href="/pages/herramienta" class="nav-link">Herramientas</a></li>
-                    <li><a href="/pages/contacto" class="nav-link">Contacto</a></li>
+                    <li><a href="/" class="nav-link" data-i18n="common.nav.home">Inicio</a></li>
+                    <li><a href="/pages/herramienta" class="nav-link" data-i18n="common.nav.tools">Herramientas</a></li>
+                    <li><a href="/pages/contacto" class="nav-link" data-i18n="common.nav.contact">Contacto</a></li>
                 </ul>
             </nav>
         </div>
@@ -64,42 +93,49 @@
 
     <div class="container page-layout">
         <main>
-            <h1>CSV ↔ JSON</h1>
-            <p>Convierte datos estructurados entre formatos CSV y JSON.</p>
+            <h1 data-i18n="pages.csv_json.h1">CSV ↔ JSON</h1>
+            <p data-i18n="pages.csv_json.subtitle">Convierte datos estructurados entre formatos CSV y JSON.</p>
 
             <div class="ad-container ad-container--content">
-                <span style="color: #94a3b8; font-size: 0.8rem;">Publicidad</span>
+                <span style="color: #94a3b8; font-size: 0.8rem;" data-i18n="common.labels.advertising">Publicidad</span>
             </div>
 
-            <!-- Mensaje de privacidad/estado -->
+            <!-- Privacy/status message -->
             <div id="message-area" class="message-area"></div>
 
-            <!-- Indicador de modo -->
+            <!-- Mode indicator -->
             <span id="mode-indicator" class="mode-indicator"></span>
 
-            <!-- Input de archivo (fuera del drop-zone para evitar conflictos de DOM) -->
-            <input type="file" id="file-input" accept=".csv,.json,text/csv,application/json" class="file-input-hidden" style="display: none;">
+            <!-- File input -->
+            <input type="file" id="file-input" accept=".csv,.json,text/csv,application/json" class="file-input-hidden"
+                style="display: none;">
 
-            <!-- Zona de carga -->
+            <!-- Drop zone -->
             <div class="card drop-zone" id="drop-zone">
                 <div class="drop-zone-icon">
-                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
                         <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                         <polyline points="14 2 14 8 20 8"></polyline>
                         <line x1="16" y1="13" x2="8" y2="13"></line>
                         <line x1="16" y1="17" x2="8" y2="17"></line>
                     </svg>
                 </div>
-                <p class="drop-zone-text">Arrastra tu archivo CSV o JSON aquí</p>
-                <button class="btn btn--primary" id="select-btn">Seleccionar Archivo</button>
-                <p class="drop-zone-hint">Archivos CSV o JSON • Máximo 10 MB</p>
+                <p class="drop-zone-text" data-i18n="common.dropzone.drag_csv_json">Arrastra tu archivo CSV o JSON aquí
+                </p>
+                <button class="btn btn--primary" id="select-btn" data-i18n="common.buttons.select_file">Seleccionar
+                    Archivo</button>
+                <p class="drop-zone-hint" data-i18n="common.dropzone.hint_csv_json">Archivos CSV o JSON • Máximo 10 MB
+                </p>
             </div>
 
-            <div class="or-separator"><span>o pega tu contenido</span></div>
+            <div class="or-separator"><span data-i18n="common.dropzone.or_paste">o pega tu contenido</span></div>
 
-            <!-- Área de texto para pegar -->
+            <!-- Text area for pasting -->
             <div class="text-area-container">
-                <textarea id="text-input" class="text-area" placeholder="Pega aquí tu CSV o JSON..."></textarea>
+                <textarea id="text-input" class="text-area"
+                    data-i18n-attr="placeholder:common.dropzone.paste_placeholder"
+                    placeholder="Pega aquí tu CSV o JSON..."></textarea>
             </div>
 
             <!-- Loader -->
@@ -107,59 +143,65 @@
                 <div class="loader-spinner"></div>
             </div>
 
-            <!-- Opción de cabecera para CSV -->
+            <!-- Header option for CSV -->
             <div style="margin: 16px 0; display: none;">
                 <label class="checkbox-label">
                     <input type="checkbox" id="header-option" checked>
-                    Primera fila como encabezados
+                    <span data-i18n="common.labels.first_row_headers">Primera fila como encabezados</span>
                 </label>
             </div>
 
-            <!-- Info del archivo -->
+            <!-- File info -->
             <div id="input-info" class="preview-info"></div>
 
-            <!-- Contenedor de previews -->
+            <!-- Preview container -->
             <div id="preview-container" class="preview-container">
-                <h3>Vista previa de entrada:</h3>
+                <h3 data-i18n="common.labels.input_preview">Vista previa de entrada:</h3>
                 <pre id="input-preview" class="code-preview"></pre>
-                
+
                 <div id="table-preview" style="display: none; overflow-x: auto;"></div>
             </div>
 
-            <!-- Botones de acción -->
+            <!-- Action buttons -->
             <div class="action-buttons">
-                <button class="btn btn--primary" id="convert-btn">Convertir</button>
-                <button class="btn btn--secondary" id="reset-btn">Limpiar</button>
+                <button class="btn btn--primary" id="convert-btn" data-i18n="common.buttons.convert">Convertir</button>
+                <button class="btn btn--secondary" id="reset-btn" data-i18n="common.buttons.clear">Limpiar</button>
             </div>
 
-            <!-- Resultado -->
+            <!-- Result -->
             <div class="text-area-container" style="margin-top: 24px;">
                 <div class="text-area-header">
-                    <span class="text-area-label">Resultado:</span>
+                    <span class="text-area-label" data-i18n="common.labels.result">Resultado:</span>
                 </div>
                 <pre id="output-preview" class="code-preview" style="display: none;"></pre>
             </div>
 
-            <!-- Botones de resultado -->
+            <!-- Result buttons -->
             <div class="action-buttons">
-                <button class="btn btn--primary" id="copy-btn" style="display: none;">Copiar al portapapeles</button>
-                <button class="btn btn--primary" id="download-btn" style="display: none;">Descargar</button>
+                <button class="btn btn--primary" id="copy-btn" style="display: none;"
+                    data-i18n="common.buttons.copy">Copiar al portapapeles</button>
+                <button class="btn btn--primary" id="download-btn" style="display: none;"
+                    data-i18n="common.buttons.download">Descargar</button>
             </div>
 
             <section style="margin-top: 40px;">
-                <h2>¿Cómo funciona?</h2>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-top: 24px;">
+                <h2 data-i18n="pages.csv_json.how_title">¿Cómo funciona?</h2>
+                <div
+                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-top: 24px;">
                     <article class="card">
-                        <h3>CSV → JSON</h3>
-                        <p>Convierte datos tabulares a formato JSON estructurado, ideal para APIs y aplicaciones web.</p>
+                        <h3 data-i18n="pages.csv_json.csv_to_json_title">CSV → JSON</h3>
+                        <p data-i18n="pages.csv_json.csv_to_json_desc">Convierte datos tabulares a formato JSON
+                            estructurado, ideal para APIs y aplicaciones web.</p>
                     </article>
                     <article class="card">
-                        <h3>JSON → CSV</h3>
-                        <p>Transforma objetos JSON en formato CSV para hojas de cálculo y análisis de datos.</p>
+                        <h3 data-i18n="pages.csv_json.json_to_csv_title">JSON → CSV</h3>
+                        <p data-i18n="pages.csv_json.json_to_csv_desc">Transforma objetos JSON en formato CSV para hojas
+                            de cálculo y análisis de datos.</p>
                     </article>
                     <article class="card">
-                        <h3>Autodetección</h3>
-                        <p>El conversor detecta automáticamente el formato de entrada y ofrece la conversión adecuada.</p>
+                        <h3 data-i18n="pages.csv_json.autodetect_title">Autodetección</h3>
+                        <p data-i18n="pages.csv_json.autodetect_desc">El conversor detecta automáticamente el formato de
+                            entrada y ofrece la conversión adecuada.</p>
                     </article>
                 </div>
             </section>
@@ -167,7 +209,7 @@
 
         <aside style="padding-top: var(--spacing-xl);">
             <div class="ad-container ad-container--top">
-                <span style="color: #94a3b8; font-size: 0.8rem;">Publicidad</span>
+                <span style="color: #94a3b8; font-size: 0.8rem;" data-i18n="common.labels.advertising">Publicidad</span>
             </div>
         </aside>
     </div>
@@ -175,28 +217,33 @@
     <footer>
         <div class="container">
             <div class="ad-container ad-container--footer" style="margin: 0 auto 40px;">
-                <span style="color: #94a3b8; font-size: 0.8rem;">Publicidad</span>
+                <span style="color: #94a3b8; font-size: 0.8rem;" data-i18n="common.labels.advertising">Publicidad</span>
             </div>
             <div class="footer-grid">
                 <div>
-                    <h4 style="color: white;">ConvertidorPro</h4>
-                    <p style="font-size: 0.9rem; color: #cbd5e1;">Herramientas digitales simples.</p>
+                    <h4 style="color: white;">Pro Conversion</h4>
+                    <p style="font-size: 0.9rem; color: #cbd5e1;" data-i18n="common.footer.tagline_short">Herramientas
+                        digitales simples.</p>
                 </div>
                 <div>
-                    <h4 style="color: white;">Legal</h4>
+                    <h4 style="color: white;" data-i18n="common.footer.legal">Legal</h4>
                     <ul style="list-style: none;">
-                        <li><a href="/pages/privacidad" style="color: #cbd5e1;">Política de Privacidad</a></li>
-                        <li><a href="/pages/terminos" style="color: #cbd5e1;">Términos de Servicio</a></li>
+                        <li><a href="/pages/privacidad" style="color: #cbd5e1;"
+                                data-i18n="common.footer.privacy">Política de Privacidad</a></li>
+                        <li><a href="/pages/terminos" style="color: #cbd5e1;" data-i18n="common.footer.terms">Términos
+                                de Servicio</a></li>
                     </ul>
                 </div>
             </div>
-            <div style="text-align: center; border-top: 1px solid #334155; padding-top: 24px; color: #94a3b8; font-size: 0.875rem;">
-                &copy; 2025 ConvertidorPro.
+            <div
+                style="text-align: center; border-top: 1px solid #334155; padding-top: 24px; color: #94a3b8; font-size: 0.875rem;">
+                <span data-i18n="common.footer.copyright">&copy; 2025 Pro Conversion.</span>
             </div>
         </div>
     </footer>
 
     <script src="js/navegacion.js"></script>
+    <script src="/js/i18n-setup.js"></script>
     <script src="js/utils.js"></script>
     <script src="js/csv-json-converter.js"></script>
     <script>
@@ -206,4 +253,5 @@
     </script>
     <script type="module" src="js/analytics.js"></script>
 </body>
+
 </html>

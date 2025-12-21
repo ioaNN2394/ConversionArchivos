@@ -1,62 +1,91 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Convierte imágenes JPG y PNG a PDF online gratis. Ideal para documentos, trámites y escaneos. Orientación vertical u horizontal. 100% seguro.">
-    <meta name="keywords" content="imagen a PDF, JPG a PDF, PNG a PDF, convertir foto PDF, crear PDF imagen, conversor PDF online gratis">
-    <meta name="author" content="ConvertidorPro">
+    <meta name="description"
+        content="Convierte imágenes JPG y PNG a PDF online gratis. Ideal para documentos, trámites y escaneos. Orientación vertical u horizontal. 100% seguro.">
+    <meta name="keywords"
+        content="imagen a PDF, JPG a PDF, PNG a PDF, convertir foto PDF, crear PDF imagen, conversor PDF online gratis">
+    <meta name="author" content="Pro Conversion">
     <meta name="robots" content="index, follow">
-    
+
     <!-- Google AdSense -->
     <meta name="google-adsense-account" content="ca-pub-2207512229687784">
-    
-    <title>Convertir Imagen a PDF Online Gratis - JPG, PNG a PDF | ConvertidorPro</title>
-    
+
+    <!-- HREFLANG -->
+    <link rel="alternate" hreflang="es" href="https://pro-conversion.com/imagen-pdf?lng=es" />
+    <link rel="alternate" hreflang="en" href="https://pro-conversion.com/imagen-pdf?lng=en" />
+    <link rel="alternate" hreflang="x-default" href="https://pro-conversion.com/imagen-pdf" />
+
+    <title>Convertir Imagen a PDF Online Gratis - JPG, PNG a PDF | Pro Conversion</title>
+
     <!-- Canonical URL -->
-    <link rel="canonical" href="https://ads2025-e4539.web.app/imagen-pdf.html">
-    
+    <link rel="canonical" href="https://pro-conversion.com/imagen-pdf.html">
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://ads2025-e4539.web.app/imagen-pdf.html">
-    <meta property="og:title" content="Convertir Imagen a PDF Online Gratis - ConvertidorPro">
-    <meta property="og:description" content="Convierte imágenes JPG y PNG a PDF gratis. Ideal para documentos y trámites.">
-    <meta property="og:image" content="https://ads2025-e4539.web.app/assets/images/og-pdf.png">
+    <meta property="og:url" content="https://pro-conversion.com/imagen-pdf.html">
+    <meta property="og:title" content="Convertir Imagen a PDF Online Gratis - Pro Conversion">
+    <meta property="og:description"
+        content="Convierte imágenes JPG y PNG a PDF gratis. Ideal para documentos y trámites.">
+    <meta property="og:image" content="https://pro-conversion.com/assets/images/og-pdf.png">
     <meta property="og:locale" content="es_ES">
-    
+
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Convertir Imagen a PDF Online Gratis">
     <meta name="twitter:description" content="Convierte imágenes JPG y PNG a PDF online gratis.">
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
+
     <link rel="stylesheet" href="css/variables.css">
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/layout.css">
     <link rel="stylesheet" href="css/componentes.css">
     <link rel="stylesheet" href="css/converters.css">
     <link rel="stylesheet" href="css/responsive.css">
-    
+
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2207512229687784"
-         crossorigin="anonymous"></script>
+        crossorigin="anonymous"></script>
+    <link rel="icon" href="assets/images/proConversionLogo.png" type="image/png">
+
+    <!-- i18next Libraries -->
+    <script src="https://unpkg.com/i18next/dist/umd/i18next.min.js"></script>
+    <script src="https://unpkg.com/i18next-http-backend/i18nextHttpBackend.min.js"></script>
+    <script
+        src="https://unpkg.com/i18next-browser-languagedetector/dist/umd/i18nextBrowserLanguageDetector.min.js"></script>
+
+    <!-- Prevent FOUC -->
+    <style>
+        body {
+            visibility: hidden;
+        }
+    </style>
 </head>
+
 <body>
     <script src="js/ad-visibility.js"></script>
     <header>
         <div class="container header-content">
-            <a href="/" style="font-weight: 800; font-size: 1.5rem; color: var(--color-primary);">ConvertidorPro</a>
+            <a href="/" style="font-weight: 800; font-size: 1.5rem; color: var(--color-primary);">Pro Conversion</a>
             <button class="mobile-menu-btn" aria-label="Abrir menú">☰</button>
             <nav class="nav-menu">
+                <select id="languageSwitcher" aria-label="Seleccionar idioma"
+                    style="margin-right: 15px; padding: 5px; border-radius: 4px;">
+                    <option value="es">Español</option>
+                    <option value="en">English</option>
+                </select>
                 <ul class="nav-list">
-                    <li><a href="/" class="nav-link">Inicio</a></li>
-                    <li><a href="/pages/herramienta" class="nav-link">Herramientas</a></li>
-                    <li><a href="/pages/contacto" class="nav-link">Contacto</a></li>
+                    <li><a href="/" class="nav-link" data-i18n="common.nav.home">Inicio</a></li>
+                    <li><a href="/pages/herramienta" class="nav-link" data-i18n="common.nav.tools">Herramientas</a></li>
+                    <li><a href="/pages/contacto" class="nav-link" data-i18n="common.nav.contact">Contacto</a></li>
                 </ul>
             </nav>
         </div>
@@ -64,30 +93,35 @@
 
     <div class="container page-layout">
         <main>
-            <h1>Imagen → PDF</h1>
-            <p>Convierte tus imágenes JPG, PNG y otros formatos a PDF de forma rápida y sencilla.</p>
+            <h1 data-i18n="pages.imagen_pdf.h1">Imagen → PDF</h1>
+            <p data-i18n="pages.imagen_pdf.subtitle">Convierte tus imágenes JPG, PNG y otros formatos a PDF de forma
+                rápida y sencilla.</p>
 
             <div class="ad-container ad-container--content">
-                <span style="color: #94a3b8; font-size: 0.8rem;">Publicidad</span>
+                <span style="color: #94a3b8; font-size: 0.8rem;" data-i18n="common.labels.advertising">Publicidad</span>
             </div>
 
-            <!-- Mensaje de privacidad/estado -->
+            <!-- Privacy/status message -->
             <div id="message-area" class="message-area"></div>
 
-            <!-- Input de archivo (fuera del drop-zone para evitar conflictos de DOM) -->
-            <input type="file" id="file-input" accept="image/*" class="file-input-hidden" multiple style="display: none;">
+            <!-- File input -->
+            <input type="file" id="file-input" accept="image/*" class="file-input-hidden" multiple
+                style="display: none;">
 
-            <!-- Zona de carga -->
+            <!-- Drop zone -->
             <div class="card drop-zone" id="drop-zone">
                 <div class="drop-zone-icon">
-                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
                         <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                         <polyline points="14 2 14 8 20 8"></polyline>
                     </svg>
                 </div>
-                <p class="drop-zone-text">Arrastra tus imágenes aquí</p>
-                <button class="btn btn--primary" id="select-btn">Seleccionar Imágenes</button>
-                <p class="drop-zone-hint">JPG, PNG, WebP • Máximo 5 archivos • 10 MB cada uno</p>
+                <p class="drop-zone-text" data-i18n="common.dropzone.drag_images">Arrastra tus imágenes aquí</p>
+                <button class="btn btn--primary" id="select-btn" data-i18n="common.buttons.select_images">Seleccionar
+                    Imágenes</button>
+                <p class="drop-zone-hint" data-i18n="common.dropzone.hint_images">JPG, PNG, WebP • Máximo 5 archivos •
+                    10 MB cada uno</p>
             </div>
 
             <!-- Loader -->
@@ -95,76 +129,90 @@
                 <div class="loader-spinner"></div>
             </div>
 
-            <!-- Conteo de archivos -->
+            <!-- File count -->
             <p id="file-count" class="file-count"></p>
 
-            <!-- Selector de orientación -->
+            <!-- Orientation selector -->
             <div id="orientation-select" class="orientation-select">
-                <label class="control-label">Orientación de página:</label>
+                <label class="control-label" data-i18n="common.labels.page_orientation">Orientación de página:</label>
                 <select id="orientation-select">
-                    <option value="portrait">Vertical (Retrato)</option>
-                    <option value="landscape">Horizontal (Paisaje)</option>
+                    <option value="portrait" data-i18n="common.labels.portrait">Vertical (Retrato)</option>
+                    <option value="landscape" data-i18n="common.labels.landscape">Horizontal (Paisaje)</option>
                 </select>
             </div>
 
-            <!-- Contenedor de previews -->
+            <!-- Preview container -->
             <div id="preview-container" class="preview-container">
-                <h3>Imágenes seleccionadas:</h3>
+                <h3 data-i18n="common.labels.selected_images">Imágenes seleccionadas:</h3>
                 <div id="preview-grid" class="preview-grid"></div>
             </div>
 
-            <!-- Botones de acción -->
+            <!-- Action buttons -->
             <div class="action-buttons">
-                <button class="btn btn--primary" id="convert-btn">Crear PDF</button>
-                <button class="btn btn--primary" id="download-btn">Descargar PDF</button>
-                <button class="btn btn--secondary" id="reset-btn">Limpiar</button>
+                <button class="btn btn--primary" id="convert-btn" data-i18n="common.buttons.create_pdf">Crear
+                    PDF</button>
+                <button class="btn btn--primary" id="download-btn" data-i18n="common.buttons.download_pdf">Descargar
+                    PDF</button>
+                <button class="btn btn--secondary" id="reset-btn" data-i18n="common.buttons.clear">Limpiar</button>
             </div>
 
             <section style="margin-top: 40px;">
-                <h2>¿Por qué convertir imágenes a PDF?</h2>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-top: 24px;">
+                <h2 data-i18n="pages.imagen_pdf.why_title">¿Por qué convertir imágenes a PDF?</h2>
+                <div
+                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-top: 24px;">
                     <article class="card">
-                        <h3>Documentos Profesionales</h3>
-                        <p>Crea PDFs perfectos para trámites, solicitudes y documentación oficial.</p>
+                        <h3 data-i18n="pages.imagen_pdf.reason_professional_title">Documentos Profesionales</h3>
+                        <p data-i18n="pages.imagen_pdf.reason_professional_desc">Crea PDFs perfectos para trámites,
+                            solicitudes y documentación oficial.</p>
                     </article>
                     <article class="card">
-                        <h3>Uso Educativo</h3>
-                        <p>Convierte trabajos, escaneados y fotos en documentos escolares formales.</p>
+                        <h3 data-i18n="pages.imagen_pdf.reason_education_title">Uso Educativo</h3>
+                        <p data-i18n="pages.imagen_pdf.reason_education_desc">Convierte trabajos, escaneados y fotos en
+                            documentos escolares formales.</p>
                     </article>
                     <article class="card">
-                        <h3>Múltiples Imágenes</h3>
-                        <p>Combina varias imágenes en un solo PDF organizado.</p>
+                        <h3 data-i18n="pages.imagen_pdf.reason_multiple_title">Múltiples Imágenes</h3>
+                        <p data-i18n="pages.imagen_pdf.reason_multiple_desc">Combina varias imágenes en un solo PDF
+                            organizado.</p>
                     </article>
                     <article class="card">
-                        <h3>Compatible Universalmente</h3>
-                        <p>Los PDFs se ven igual en cualquier dispositivo o navegador.</p>
+                        <h3 data-i18n="pages.imagen_pdf.reason_universal_title">Compatible Universalmente</h3>
+                        <p data-i18n="pages.imagen_pdf.reason_universal_desc">Los PDFs se ven igual en cualquier
+                            dispositivo o navegador.</p>
                     </article>
                     <article class="card">
-                        <h3>Fácil de Compartir</h3>
-                        <p>Envía documentos por email sin preocuparte por compatibilidad.</p>
+                        <h3 data-i18n="pages.imagen_pdf.reason_share_title">Fácil de Compartir</h3>
+                        <p data-i18n="pages.imagen_pdf.reason_share_desc">Envía documentos por email sin preocuparte por
+                            compatibilidad.</p>
                     </article>
                     <article class="card">
-                        <h3>Protección de Contenido</h3>
-                        <p>Los PDFs protegen mejor tu contenido y formato original.</p>
+                        <h3 data-i18n="pages.imagen_pdf.reason_protect_title">Protección de Contenido</h3>
+                        <p data-i18n="pages.imagen_pdf.reason_protect_desc">Los PDFs protegen mejor tu contenido y
+                            formato original.</p>
                     </article>
                 </div>
             </section>
 
             <section style="margin-top: 40px;">
-                <h2>Uso Común</h2>
+                <h2 data-i18n="pages.imagen_pdf.common_uses_title">Uso Común</h2>
                 <ul style="margin-top: 20px; color: var(--color-text-light);">
-                    <li style="margin-bottom: 12px;">📋 Solicitudes de empleo y documentación</li>
-                    <li style="margin-bottom: 12px;">🎓 Trabajos prácticos escolares y universitarios</li>
-                    <li style="margin-bottom: 12px;">📸 Escaneos de fotos y documentos</li>
-                    <li style="margin-bottom: 12px;">✍️ Tarea de completar formularios</li>
-                    <li style="margin-bottom: 12px;">📁 Archivado y organización de documentos</li>
+                    <li style="margin-bottom: 12px;" data-i18n="pages.imagen_pdf.use_employment">📋 Solicitudes de
+                        empleo y documentación</li>
+                    <li style="margin-bottom: 12px;" data-i18n="pages.imagen_pdf.use_education">🎓 Trabajos prácticos
+                        escolares y universitarios</li>
+                    <li style="margin-bottom: 12px;" data-i18n="pages.imagen_pdf.use_scans">📸 Escaneos de fotos y
+                        documentos</li>
+                    <li style="margin-bottom: 12px;" data-i18n="pages.imagen_pdf.use_forms">✍️ Tarea de completar
+                        formularios</li>
+                    <li style="margin-bottom: 12px;" data-i18n="pages.imagen_pdf.use_archive">📁 Archivado y
+                        organización de documentos</li>
                 </ul>
             </section>
         </main>
 
         <aside style="padding-top: var(--spacing-xl);">
             <div class="ad-container ad-container--top">
-                <span style="color: #94a3b8; font-size: 0.8rem;">Publicidad</span>
+                <span style="color: #94a3b8; font-size: 0.8rem;" data-i18n="common.labels.advertising">Publicidad</span>
             </div>
         </aside>
     </div>
@@ -172,31 +220,36 @@
     <footer>
         <div class="container">
             <div class="ad-container ad-container--footer" style="margin: 0 auto 40px;">
-                <span style="color: #94a3b8; font-size: 0.8rem;">Publicidad</span>
+                <span style="color: #94a3b8; font-size: 0.8rem;" data-i18n="common.labels.advertising">Publicidad</span>
             </div>
             <div class="footer-grid">
                 <div>
-                    <h4 style="color: white;">ConvertidorPro</h4>
-                    <p style="font-size: 0.9rem; color: #cbd5e1;">Herramientas digitales simples.</p>
+                    <h4 style="color: white;">Pro Conversion</h4>
+                    <p style="font-size: 0.9rem; color: #cbd5e1;" data-i18n="common.footer.tagline_short">Herramientas
+                        digitales simples.</p>
                 </div>
                 <div>
-                    <h4 style="color: white;">Legal</h4>
+                    <h4 style="color: white;" data-i18n="common.footer.legal">Legal</h4>
                     <ul style="list-style: none;">
-                        <li><a href="/pages/privacidad" style="color: #cbd5e1;">Política de Privacidad</a></li>
-                        <li><a href="/pages/terminos" style="color: #cbd5e1;">Términos de Servicio</a></li>
+                        <li><a href="/pages/privacidad" style="color: #cbd5e1;"
+                                data-i18n="common.footer.privacy">Política de Privacidad</a></li>
+                        <li><a href="/pages/terminos" style="color: #cbd5e1;" data-i18n="common.footer.terms">Términos
+                                de Servicio</a></li>
                     </ul>
                 </div>
             </div>
-            <div style="text-align: center; border-top: 1px solid #334155; padding-top: 24px; color: #94a3b8; font-size: 0.875rem;">
-                &copy; 2025 ConvertidorPro.
+            <div
+                style="text-align: center; border-top: 1px solid #334155; padding-top: 24px; color: #94a3b8; font-size: 0.875rem;">
+                <span data-i18n="common.footer.copyright">&copy; 2025 Pro Conversion.</span>
             </div>
         </div>
     </footer>
 
-    <!-- Librería jsPDF (Necesaria para generar el PDF) -->
+    <!-- jsPDF Library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
     <script src="js/navegacion.js"></script>
+    <script src="/js/i18n-setup.js"></script>
     <script src="js/utils.js"></script>
     <script src="js/image-to-pdf.js"></script>
     <script>
@@ -206,4 +259,5 @@
     </script>
     <script type="module" src="js/analytics.js"></script>
 </body>
+
 </html>

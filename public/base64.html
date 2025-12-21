@@ -1,62 +1,91 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Codifica y decodifica Base64 online gratis. Conversión instantánea de texto a Base64 y viceversa. Herramienta para desarrolladores 100% segura.">
-    <meta name="keywords" content="Base64 encoder, Base64 decoder, codificar Base64, decodificar Base64, conversor Base64 online, texto a Base64">
-    <meta name="author" content="ConvertidorPro">
+    <meta name="description"
+        content="Codifica y decodifica Base64 online gratis. Conversión instantánea de texto a Base64 y viceversa. Herramienta para desarrolladores 100% segura.">
+    <meta name="keywords"
+        content="Base64 encoder, Base64 decoder, codificar Base64, decodificar Base64, conversor Base64 online, texto a Base64">
+    <meta name="author" content="Pro Conversion">
     <meta name="robots" content="index, follow">
-    
+
     <!-- Google AdSense -->
     <meta name="google-adsense-account" content="ca-pub-2207512229687784">
-    
-    <title>Codificador y Decodificador Base64 Online Gratis | ConvertidorPro</title>
-    
+
+    <!-- HREFLANG -->
+    <link rel="alternate" hreflang="es" href="https://pro-conversion.com/base64?lng=es" />
+    <link rel="alternate" hreflang="en" href="https://pro-conversion.com/base64?lng=en" />
+    <link rel="alternate" hreflang="x-default" href="https://pro-conversion.com/base64" />
+
+    <title>Codificador y Decodificador Base64 Online Gratis | Pro Conversion</title>
+
     <!-- Canonical URL -->
-    <link rel="canonical" href="https://ads2025-e4539.web.app/base64.html">
-    
+    <link rel="canonical" href="https://pro-conversion.com/base64.html">
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://ads2025-e4539.web.app/base64.html">
-    <meta property="og:title" content="Codificador Base64 Online Gratis - ConvertidorPro">
-    <meta property="og:description" content="Codifica y decodifica Base64 online gratis. Herramienta para desarrolladores.">
-    <meta property="og:image" content="https://ads2025-e4539.web.app/assets/images/og-base64.png">
+    <meta property="og:url" content="https://pro-conversion.com/base64.html">
+    <meta property="og:title" content="Codificador Base64 Online Gratis - Pro Conversion">
+    <meta property="og:description"
+        content="Codifica y decodifica Base64 online gratis. Herramienta para desarrolladores.">
+    <meta property="og:image" content="https://pro-conversion.com/assets/images/og-base64.png">
     <meta property="og:locale" content="es_ES">
-    
+
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Codificador Base64 Online Gratis">
     <meta name="twitter:description" content="Codifica y decodifica Base64 online gratis.">
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
+
     <link rel="stylesheet" href="css/variables.css">
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/layout.css">
     <link rel="stylesheet" href="css/componentes.css">
     <link rel="stylesheet" href="css/converters.css">
     <link rel="stylesheet" href="css/responsive.css">
-    
+
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2207512229687784"
-         crossorigin="anonymous"></script>
+        crossorigin="anonymous"></script>
+    <link rel="icon" href="assets/images/proConversionLogo.png" type="image/png">
+
+    <!-- i18next Libraries -->
+    <script src="https://unpkg.com/i18next/dist/umd/i18next.min.js"></script>
+    <script src="https://unpkg.com/i18next-http-backend/i18nextHttpBackend.min.js"></script>
+    <script
+        src="https://unpkg.com/i18next-browser-languagedetector/dist/umd/i18nextBrowserLanguageDetector.min.js"></script>
+
+    <!-- Prevent FOUC -->
+    <style>
+        body {
+            visibility: hidden;
+        }
+    </style>
 </head>
+
 <body>
     <script src="js/ad-visibility.js"></script>
     <header>
         <div class="container header-content">
-            <a href="/" style="font-weight: 800; font-size: 1.5rem; color: var(--color-primary);">ConvertidorPro</a>
+            <a href="/" style="font-weight: 800; font-size: 1.5rem; color: var(--color-primary);">Pro Conversion</a>
             <button class="mobile-menu-btn" aria-label="Abrir menú">☰</button>
             <nav class="nav-menu">
+                <select id="languageSwitcher" aria-label="Seleccionar idioma"
+                    style="margin-right: 15px; padding: 5px; border-radius: 4px;">
+                    <option value="es">Español</option>
+                    <option value="en">English</option>
+                </select>
                 <ul class="nav-list">
-                    <li><a href="/" class="nav-link">Inicio</a></li>
-                    <li><a href="/pages/herramienta" class="nav-link">Herramientas</a></li>
-                    <li><a href="/pages/contacto" class="nav-link">Contacto</a></li>
+                    <li><a href="/" class="nav-link" data-i18n="common.nav.home">Inicio</a></li>
+                    <li><a href="/pages/herramienta" class="nav-link" data-i18n="common.nav.tools">Herramientas</a></li>
+                    <li><a href="/pages/contacto" class="nav-link" data-i18n="common.nav.contact">Contacto</a></li>
                 </ul>
             </nav>
         </div>
@@ -64,72 +93,85 @@
 
     <div class="container page-layout">
         <main>
-            <h1>Base64 Encoder/Decoder</h1>
-            <p>Codifica texto o archivos a Base64 y decodifica Base64 a texto original.</p>
+            <h1 data-i18n="pages.base64.h1">Base64 Encoder/Decoder</h1>
+            <p data-i18n="pages.base64.subtitle">Codifica texto o archivos a Base64 y decodifica Base64 a texto
+                original.</p>
 
             <div class="ad-container ad-container--content">
-                <span style="color: #94a3b8; font-size: 0.8rem;">Publicidad</span>
+                <span style="color: #94a3b8; font-size: 0.8rem;" data-i18n="common.labels.advertising">Publicidad</span>
             </div>
 
-            <!-- Mensaje de privacidad/estado -->
+            <!-- Privacy/status message -->
             <div id="message-area" class="message-area"></div>
 
-            <!-- Contenedor principal Base64 -->
+            <!-- Main Base64 container -->
             <div class="card" style="padding: 24px; margin: 24px 0;">
                 <div class="base64-container">
-                    <!-- Área de entrada -->
+                    <!-- Input area -->
                     <div class="text-area-container">
                         <div class="text-area-header">
-                            <label class="text-area-label" for="input-text">Texto de entrada:</label>
-                            <span id="input-char-count" class="char-count">0 caracteres</span>
+                            <label class="text-area-label" for="input-text" data-i18n="pages.base64.input_label">Texto
+                                de entrada:</label>
+                            <span id="input-char-count" class="char-count">0 <span
+                                    data-i18n="common.labels.characters">caracteres</span></span>
                         </div>
-                        <textarea id="input-text" class="text-area" placeholder="Escribe o pega texto aquí..." rows="8"></textarea>
+                        <textarea id="input-text" class="text-area"
+                            data-i18n-attr="placeholder:pages.base64.input_placeholder"
+                            placeholder="Escribe o pega texto aquí..." rows="8"></textarea>
                     </div>
 
-                    <!-- Área de salida -->
+                    <!-- Output area -->
                     <div class="text-area-container">
                         <div class="text-area-header">
-                            <label class="text-area-label" for="output-text">Resultado:</label>
-                            <span id="output-char-count" class="char-count">0 caracteres</span>
+                            <label class="text-area-label" for="output-text"
+                                data-i18n="pages.base64.output_label">Resultado:</label>
+                            <span id="output-char-count" class="char-count">0 <span
+                                    data-i18n="common.labels.characters">caracteres</span></span>
                         </div>
-                        <textarea id="output-text" class="text-area" placeholder="El resultado aparecerá aquí..." rows="8" readonly></textarea>
+                        <textarea id="output-text" class="text-area"
+                            data-i18n-attr="placeholder:pages.base64.output_placeholder"
+                            placeholder="El resultado aparecerá aquí..." rows="8" readonly></textarea>
                     </div>
                 </div>
 
-                <!-- Botones de acción -->
+                <!-- Action buttons -->
                 <div class="base64-actions">
-                    <button class="btn btn--primary" id="encode-btn">
+                    <button class="btn btn--primary" id="encode-btn" data-i18n="pages.base64.encode_btn">
                         Texto → Base64
                     </button>
-                    <button class="btn btn--primary" id="decode-btn">
+                    <button class="btn btn--primary" id="decode-btn" data-i18n="pages.base64.decode_btn">
                         Base64 → Texto
                     </button>
-                    <button class="btn btn--secondary" id="swap-btn">
+                    <button class="btn btn--secondary" id="swap-btn" data-i18n="common.buttons.swap">
                         ⇄ Intercambiar
                     </button>
-                    <button class="btn btn--secondary" id="copy-btn">
+                    <button class="btn btn--secondary" id="copy-btn" data-i18n="common.buttons.copy_result">
                         Copiar resultado
                     </button>
-                    <button class="btn btn--secondary" id="clear-btn">
+                    <button class="btn btn--secondary" id="clear-btn" data-i18n="common.buttons.clear">
                         Limpiar
                     </button>
                 </div>
             </div>
 
             <section style="margin-top: 40px;">
-                <h2>¿Qué es Base64?</h2>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-top: 24px;">
+                <h2 data-i18n="pages.base64.what_is_title">¿Qué es Base64?</h2>
+                <div
+                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-top: 24px;">
                     <article class="card">
-                        <h3>🔒 Codificación segura</h3>
-                        <p>Base64 convierte datos binarios en texto ASCII, permitiendo transmitirlos de forma segura.</p>
+                        <h3 data-i18n="pages.base64.feature_secure_title">🔒 Codificación segura</h3>
+                        <p data-i18n="pages.base64.feature_secure_desc">Base64 convierte datos binarios en texto ASCII,
+                            permitiendo transmitirlos de forma segura.</p>
                     </article>
                     <article class="card">
-                        <h3>📧 Email y web</h3>
-                        <p>Ampliamente usado en emails, URLs, y para incrustar imágenes en HTML/CSS.</p>
+                        <h3 data-i18n="pages.base64.feature_email_title">📧 Email y web</h3>
+                        <p data-i18n="pages.base64.feature_email_desc">Ampliamente usado en emails, URLs, y para
+                            incrustar imágenes en HTML/CSS.</p>
                     </article>
                     <article class="card">
-                        <h3>🔄 Bidireccional</h3>
-                        <p>Puedes codificar texto a Base64 y decodificar Base64 a texto original sin pérdida.</p>
+                        <h3 data-i18n="pages.base64.feature_bidirectional_title">🔄 Bidireccional</h3>
+                        <p data-i18n="pages.base64.feature_bidirectional_desc">Puedes codificar texto a Base64 y
+                            decodificar Base64 a texto original sin pérdida.</p>
                     </article>
                 </div>
             </section>
@@ -137,7 +179,7 @@
 
         <aside style="padding-top: var(--spacing-xl);">
             <div class="ad-container ad-container--top">
-                <span style="color: #94a3b8; font-size: 0.8rem;">Publicidad</span>
+                <span style="color: #94a3b8; font-size: 0.8rem;" data-i18n="common.labels.advertising">Publicidad</span>
             </div>
         </aside>
     </div>
@@ -145,28 +187,33 @@
     <footer>
         <div class="container">
             <div class="ad-container ad-container--footer" style="margin: 0 auto 40px;">
-                <span style="color: #94a3b8; font-size: 0.8rem;">Publicidad</span>
+                <span style="color: #94a3b8; font-size: 0.8rem;" data-i18n="common.labels.advertising">Publicidad</span>
             </div>
             <div class="footer-grid">
                 <div>
-                    <h4 style="color: white;">ConvertidorPro</h4>
-                    <p style="font-size: 0.9rem; color: #cbd5e1;">Herramientas digitales simples.</p>
+                    <h4 style="color: white;">Pro Conversion</h4>
+                    <p style="font-size: 0.9rem; color: #cbd5e1;" data-i18n="common.footer.tagline_short">Herramientas
+                        digitales simples.</p>
                 </div>
                 <div>
-                    <h4 style="color: white;">Legal</h4>
+                    <h4 style="color: white;" data-i18n="common.footer.legal">Legal</h4>
                     <ul style="list-style: none;">
-                        <li><a href="/pages/privacidad" style="color: #cbd5e1;">Política de Privacidad</a></li>
-                        <li><a href="/pages/terminos" style="color: #cbd5e1;">Términos de Servicio</a></li>
+                        <li><a href="/pages/privacidad" style="color: #cbd5e1;"
+                                data-i18n="common.footer.privacy">Política de Privacidad</a></li>
+                        <li><a href="/pages/terminos" style="color: #cbd5e1;" data-i18n="common.footer.terms">Términos
+                                de Servicio</a></li>
                     </ul>
                 </div>
             </div>
-            <div style="text-align: center; border-top: 1px solid #334155; padding-top: 24px; color: #94a3b8; font-size: 0.875rem;">
-                &copy; 2025 ConvertidorPro.
+            <div
+                style="text-align: center; border-top: 1px solid #334155; padding-top: 24px; color: #94a3b8; font-size: 0.875rem;">
+                <span data-i18n="common.footer.copyright">&copy; 2025 Pro Conversion.</span>
             </div>
         </div>
     </footer>
 
     <script src="js/navegacion.js"></script>
+    <script src="/js/i18n-setup.js"></script>
     <script src="js/utils.js"></script>
     <script src="js/base64-converter.js"></script>
     <script>
@@ -176,4 +223,5 @@
     </script>
     <script type="module" src="js/analytics.js"></script>
 </body>
+
 </html>

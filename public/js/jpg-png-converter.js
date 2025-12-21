@@ -1,4 +1,16 @@
+/**
+ * JPG to PNG Converter
+ * Convierte imágenes JPG a PNG con soporte i18n
+ */
 class JpgPngConverter {
+    // Helper para traducciones
+    static t(key, fallback) {
+        if (typeof ConversionUtils !== 'undefined' && ConversionUtils.t) {
+            return ConversionUtils.t(key, fallback);
+        }
+        return fallback;
+    }
+
     static init(type) {
         this.type = type;
         this.selectedFile = null;
@@ -55,7 +67,7 @@ class JpgPngConverter {
                 e.preventDefault();
                 e.stopPropagation();
                 this.dropZone.style.backgroundColor = '';
-                
+
                 if (e.dataTransfer.files.length > 0) {
                     this.handleFileSelection(e.dataTransfer.files[0]);
                 }
@@ -96,14 +108,14 @@ class JpgPngConverter {
         const isValidExt = file.name.toLowerCase().endsWith('.jpg') || file.name.toLowerCase().endsWith('.jpeg');
 
         if (!isValidType && !isValidExt) {
-            this.showMessage('Por favor selecciona un archivo JPG/JPEG válido.', 'error');
+            this.showMessage(this.t('common.messages.invalid_file', 'Por favor selecciona un archivo JPG/JPEG válido.'), 'error');
             return;
         }
 
         // Validar tamaño
         const maxSize = 10 * 1024 * 1024;
         if (file.size > maxSize) {
-            this.showMessage('El archivo excede el tamaño máximo de 10 MB.', 'error');
+            this.showMessage(this.t('common.messages.max_size', 'El archivo excede el tamaño máximo de 10 MB.'), 'error');
             return;
         }
 
@@ -124,12 +136,13 @@ class JpgPngConverter {
         reader.onload = (e) => {
             this.originalPreview.src = e.target.result;
             this.originalPreview.style.display = 'block';
-            this.originalInfo.textContent = `Tamaño: ${(file.size / 1024 / 1024).toFixed(2)} MB`;
+            const sizeLabel = this.t('common.labels.size', 'Tamaño');
+            this.originalInfo.textContent = `${sizeLabel}: ${(file.size / 1024 / 1024).toFixed(2)} MB`;
         };
         reader.readAsDataURL(file);
 
         this.convertBtn.disabled = false;
-        this.convertBtn.textContent = 'Convertir a PNG';
+        this.convertBtn.textContent = this.t('common.buttons.convert_to_png', 'Convertir a PNG');
 
         this.resultPreview.style.display = 'none';
         this.resultInfo.textContent = '';
@@ -155,17 +168,18 @@ class JpgPngConverter {
             const originalSize = this.selectedFile.size;
             const compressedSize = result.blob.size;
             const reduction = (((originalSize - compressedSize) / originalSize) * 100).toFixed(1);
-            this.resultInfo.textContent = `Tamaño: ${(compressedSize / 1024 / 1024).toFixed(2)} MB (${reduction}% reducción)`;
+            const sizeLabel = this.t('common.labels.size', 'Tamaño');
+            this.resultInfo.textContent = `${sizeLabel}: ${(compressedSize / 1024 / 1024).toFixed(2)} MB (${reduction}% reducción)`;
 
             // Habilitar descarga
             this.downloadBtn.disabled = false;
-            this.downloadBtn.textContent = 'Descargar PNG';
+            this.downloadBtn.textContent = this.t('common.buttons.download_png', 'Descargar PNG');
 
-            this.showMessage('Conversión completada exitosamente.', 'success');
+            this.showMessage(this.t('common.messages.success', 'Conversión completada exitosamente.'), 'success');
 
         } catch (error) {
             console.error('Error:', error);
-            this.showMessage('Error en la conversión: ' + error.message, 'error');
+            this.showMessage(this.t('common.messages.error', 'Error en la conversión: ') + error.message, 'error');
         } finally {
             this.showLoading(false);
             this.convertBtn.disabled = false;
@@ -173,37 +187,38 @@ class JpgPngConverter {
     }
 
     static convertJPGtoPNG(file) {
+        const self = this;
         return new Promise((resolve, reject) => {
             // Validación robusta: Tipo O Extensión (jpg o jpeg)
             const isValidType = file.type.includes('image/jpeg');
             const isValidExt = file.name.toLowerCase().endsWith('.jpg') || file.name.toLowerCase().endsWith('.jpeg');
 
             if (!isValidType && !isValidExt) {
-                reject(new Error('El archivo no es un JPG válido'));
+                reject(new Error(self.t('common.messages.invalid_file', 'El archivo no es un JPG válido')));
                 return;
             }
 
             // Leer el archivo JPG
             const reader = new FileReader();
-            
-            reader.onload = function(event) {
+
+            reader.onload = function (event) {
                 const img = new Image();
-                
-                img.onload = function() {
+
+                img.onload = function () {
                     try {
                         // Crear canvas
                         const canvas = document.createElement('canvas');
                         canvas.width = img.width;
                         canvas.height = img.height;
-                        
+
                         const ctx = canvas.getContext('2d');
-                        
+
                         // Dibujar imagen sin fondo (PNG soporta transparencia)
                         ctx.drawImage(img, 0, 0);
-                        
+
                         // Convertir a PNG
                         canvas.toBlob(
-                            function(blob) {
+                            function (blob) {
                                 resolve({
                                     blob: blob,
                                     filename: file.name.replace('.jpg', '.png').replace('.jpeg', '.png')
@@ -212,23 +227,23 @@ class JpgPngConverter {
                             'image/png'
                         );
                     } catch (error) {
-                        reject(new Error('Error durante la conversión: ' + error.message));
+                        reject(new Error(self.t('common.messages.error', 'Error durante la conversión: ') + error.message));
                     }
                 };
-                
-                img.onerror = function() {
-                    reject(new Error('No se pudo cargar la imagen JPG'));
+
+                img.onerror = function () {
+                    reject(new Error(self.t('common.messages.read_error', 'No se pudo cargar la imagen JPG')));
                 };
-                
+
                 // Establecer origen para CORS
                 img.crossOrigin = 'anonymous';
                 img.src = event.target.result;
             };
-            
-            reader.onerror = function() {
-                reject(new Error('Error al leer el archivo'));
+
+            reader.onerror = function () {
+                reject(new Error(self.t('common.messages.read_error', 'Error al leer el archivo')));
             };
-            
+
             reader.readAsDataURL(file);
         });
     }
@@ -260,7 +275,7 @@ class JpgPngConverter {
         this.downloadBtn.disabled = true;
         this.showMessage('', '');
         this.showLoading(false);
-        
+
         // Ocultar botones de acción
         const actionButtons = document.querySelector('.action-buttons');
         if (actionButtons) {

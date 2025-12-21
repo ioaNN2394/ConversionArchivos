@@ -1,62 +1,91 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Generador de códigos QR online gratis. Crea QRs personalizados para URLs, texto, WiFi y más. Descarga en PNG de alta calidad. 100% gratuito.">
-    <meta name="keywords" content="generador QR, crear código QR, QR gratis online, QR personalizado, generar QR URL, código QR PNG">
-    <meta name="author" content="ConvertidorPro">
+    <meta name="description"
+        content="Generador de códigos QR online gratis. Crea QRs personalizados para URLs, texto, WiFi y más. Descarga en PNG de alta calidad. 100% gratuito.">
+    <meta name="keywords"
+        content="generador QR, crear código QR, QR gratis online, QR personalizado, generar QR URL, código QR PNG">
+    <meta name="author" content="Pro Conversion">
     <meta name="robots" content="index, follow">
-    
+
     <!-- Google AdSense -->
     <meta name="google-adsense-account" content="ca-pub-2207512229687784">
-    
-    <title>Generador de Códigos QR Online Gratis - Crear QR | ConvertidorPro</title>
-    
+
+    <!-- HREFLANG -->
+    <link rel="alternate" hreflang="es" href="https://pro-conversion.com/qr-generator?lng=es" />
+    <link rel="alternate" hreflang="en" href="https://pro-conversion.com/qr-generator?lng=en" />
+    <link rel="alternate" hreflang="x-default" href="https://pro-conversion.com/qr-generator" />
+
+    <title>Generador de Códigos QR Online Gratis - Crear QR | Pro Conversion</title>
+
     <!-- Canonical URL -->
-    <link rel="canonical" href="https://ads2025-e4539.web.app/qr-generator.html">
-    
+    <link rel="canonical" href="https://pro-conversion.com/qr-generator.html">
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://ads2025-e4539.web.app/qr-generator.html">
-    <meta property="og:title" content="Generador de Códigos QR Online Gratis - ConvertidorPro">
-    <meta property="og:description" content="Crea códigos QR personalizados para URLs, texto y más. Descarga en PNG gratis.">
-    <meta property="og:image" content="https://ads2025-e4539.web.app/assets/images/og-qr.png">
+    <meta property="og:url" content="https://pro-conversion.com/qr-generator.html">
+    <meta property="og:title" content="Generador de Códigos QR Online Gratis - Pro Conversion">
+    <meta property="og:description"
+        content="Crea códigos QR personalizados para URLs, texto y más. Descarga en PNG gratis.">
+    <meta property="og:image" content="https://pro-conversion.com/assets/images/og-qr.png">
     <meta property="og:locale" content="es_ES">
-    
+
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Generador de Códigos QR Online Gratis">
     <meta name="twitter:description" content="Crea códigos QR personalizados gratis para URLs, texto y más.">
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
+
     <link rel="stylesheet" href="css/variables.css">
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/layout.css">
     <link rel="stylesheet" href="css/componentes.css">
     <link rel="stylesheet" href="css/converters.css">
     <link rel="stylesheet" href="css/responsive.css">
-    
+
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2207512229687784"
-         crossorigin="anonymous"></script>
+        crossorigin="anonymous"></script>
+    <link rel="icon" href="assets/images/proConversionLogo.png" type="image/png">
+
+    <!-- i18next Libraries -->
+    <script src="https://unpkg.com/i18next/dist/umd/i18next.min.js"></script>
+    <script src="https://unpkg.com/i18next-http-backend/i18nextHttpBackend.min.js"></script>
+    <script
+        src="https://unpkg.com/i18next-browser-languagedetector/dist/umd/i18nextBrowserLanguageDetector.min.js"></script>
+
+    <!-- Prevent FOUC -->
+    <style>
+        body {
+            visibility: hidden;
+        }
+    </style>
 </head>
+
 <body>
     <script src="js/ad-visibility.js"></script>
     <header>
         <div class="container header-content">
-            <a href="/" style="font-weight: 800; font-size: 1.5rem; color: var(--color-primary);">ConvertidorPro</a>
+            <a href="/" style="font-weight: 800; font-size: 1.5rem; color: var(--color-primary);">Pro Conversion</a>
             <button class="mobile-menu-btn" aria-label="Abrir menú">☰</button>
             <nav class="nav-menu">
+                <select id="languageSwitcher" aria-label="Seleccionar idioma"
+                    style="margin-right: 15px; padding: 5px; border-radius: 4px;">
+                    <option value="es">Español</option>
+                    <option value="en">English</option>
+                </select>
                 <ul class="nav-list">
-                    <li><a href="/" class="nav-link">Inicio</a></li>
-                    <li><a href="/pages/herramienta" class="nav-link">Herramientas</a></li>
-                    <li><a href="/pages/contacto" class="nav-link">Contacto</a></li>
+                    <li><a href="/" class="nav-link" data-i18n="common.nav.home">Inicio</a></li>
+                    <li><a href="/pages/herramienta" class="nav-link" data-i18n="common.nav.tools">Herramientas</a></li>
+                    <li><a href="/pages/contacto" class="nav-link" data-i18n="common.nav.contact">Contacto</a></li>
                 </ul>
             </nav>
         </div>
@@ -64,75 +93,84 @@
 
     <div class="container page-layout">
         <main>
-            <h1>Generador QR</h1>
-            <p>Crea códigos QR personalizados para tus enlaces o textos.</p>
+            <h1 data-i18n="pages.qr_generator.h1">Generador QR</h1>
+            <p data-i18n="pages.qr_generator.subtitle">Crea códigos QR personalizados para tus enlaces o textos.</p>
 
             <div class="ad-container ad-container--content">
-                <span style="color: #94a3b8; font-size: 0.8rem;">Publicidad</span>
+                <span style="color: #94a3b8; font-size: 0.8rem;" data-i18n="common.labels.advertising">Publicidad</span>
             </div>
 
-            <!-- Mensaje de privacidad/estado -->
+            <!-- Privacy/status message -->
             <div id="message-area" class="message-area"></div>
 
-            <!-- Área de entrada de texto -->
+            <!-- Text input area -->
             <div class="card" style="padding: 24px; margin: 24px 0;">
                 <div class="text-area-container">
                     <div class="text-area-header">
-                        <label class="text-area-label" for="qr-text-input">URL o texto para el código QR:</label>
+                        <label class="text-area-label" for="qr-text-input"
+                            data-i18n="pages.qr_generator.input_label">URL o texto para el código QR:</label>
                         <span id="char-count" class="char-count">0 / 2953</span>
                     </div>
-                    <textarea id="qr-text-input" class="text-area" placeholder="Escribe o pega tu URL o texto aquí..." rows="3"></textarea>
+                    <textarea id="qr-text-input" class="text-area"
+                        data-i18n-attr="placeholder:pages.qr_generator.input_placeholder"
+                        placeholder="Escribe o pega tu URL o texto aquí..." rows="3"></textarea>
                 </div>
 
-                <!-- Opciones de QR -->
+                <!-- QR options -->
                 <div class="qr-options">
                     <div class="qr-option">
-                        <label for="qr-size">Tamaño:</label>
+                        <label for="qr-size" data-i18n="common.labels.qr_size">Tamaño:</label>
                         <select id="qr-size">
-                            <option value="small">Pequeño (128px)</option>
-                            <option value="medium" selected>Mediano (256px)</option>
-                            <option value="large">Grande (512px)</option>
+                            <option value="small" data-i18n="common.labels.small">Pequeño (128px)</option>
+                            <option value="medium" selected data-i18n="common.labels.medium">Mediano (256px)</option>
+                            <option value="large" data-i18n="common.labels.large">Grande (512px)</option>
                         </select>
                     </div>
                     <div class="qr-option">
-                        <label for="qr-fg-color">Color del código:</label>
+                        <label for="qr-fg-color" data-i18n="common.labels.code_color">Color del código:</label>
                         <input type="color" id="qr-fg-color" value="#000000">
                     </div>
                     <div class="qr-option">
-                        <label for="qr-bg-color">Color de fondo:</label>
+                        <label for="qr-bg-color" data-i18n="common.labels.bg_color">Color de fondo:</label>
                         <input type="color" id="qr-bg-color" value="#ffffff">
                     </div>
                 </div>
 
-                <button class="btn btn--primary" id="generate-btn" disabled style="width: 100%; margin-top: 16px;">Generar Código QR</button>
+                <button class="btn btn--primary" id="generate-btn" disabled style="width: 100%; margin-top: 16px;"
+                    data-i18n="pages.qr_generator.generate_btn">Generar Código QR</button>
             </div>
 
-            <!-- Contenedor del QR generado -->
+            <!-- Generated QR container -->
             <div id="qr-container" class="qr-container">
-                <h3 style="margin-bottom: 16px;">Tu código QR:</h3>
+                <h3 style="margin-bottom: 16px;" data-i18n="pages.qr_generator.your_qr">Tu código QR:</h3>
                 <div id="qr-result" class="qr-result"></div>
             </div>
 
-            <!-- Botones de acción -->
+            <!-- Action buttons -->
             <div class="action-buttons" style="justify-content: center;">
-                <button class="btn btn--primary" id="download-btn">Descargar PNG</button>
-                <button class="btn btn--secondary" id="reset-btn">Limpiar</button>
+                <button class="btn btn--primary" id="download-btn" data-i18n="common.buttons.download_png">Descargar
+                    PNG</button>
+                <button class="btn btn--secondary" id="reset-btn" data-i18n="common.buttons.clear">Limpiar</button>
             </div>
 
             <section style="margin-top: 40px;">
-                <h2>Usos comunes de códigos QR</h2>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-top: 24px;">
+                <h2 data-i18n="pages.qr_generator.uses_title">Usos comunes de códigos QR</h2>
+                <div
+                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-top: 24px;">
                     <article class="card">
-                        <h3>🔗 Enlaces web</h3>
-                        <p>Comparte URLs de tu sitio web, redes sociales o contenido online.</p>
+                        <h3 data-i18n="pages.qr_generator.use_links_title">🔗 Enlaces web</h3>
+                        <p data-i18n="pages.qr_generator.use_links_desc">Comparte URLs de tu sitio web, redes sociales o
+                            contenido online.</p>
                     </article>
                     <article class="card">
-                        <h3>📞 Contacto</h3>
-                        <p>Comparte tu número de teléfono, email o información de contacto.</p>
+                        <h3 data-i18n="pages.qr_generator.use_contact_title">📞 Contacto</h3>
+                        <p data-i18n="pages.qr_generator.use_contact_desc">Comparte tu número de teléfono, email o
+                            información de contacto.</p>
                     </article>
                     <article class="card">
-                        <h3>🏢 Negocios</h3>
-                        <p>Menús digitales, tarjetas de presentación, promociones y más.</p>
+                        <h3 data-i18n="pages.qr_generator.use_business_title">🏢 Negocios</h3>
+                        <p data-i18n="pages.qr_generator.use_business_desc">Menús digitales, tarjetas de presentación,
+                            promociones y más.</p>
                     </article>
                 </div>
             </section>
@@ -140,7 +178,7 @@
 
         <aside style="padding-top: var(--spacing-xl);">
             <div class="ad-container ad-container--top">
-                <span style="color: #94a3b8; font-size: 0.8rem;">Publicidad</span>
+                <span style="color: #94a3b8; font-size: 0.8rem;" data-i18n="common.labels.advertising">Publicidad</span>
             </div>
         </aside>
     </div>
@@ -148,28 +186,33 @@
     <footer>
         <div class="container">
             <div class="ad-container ad-container--footer" style="margin: 0 auto 40px;">
-                <span style="color: #94a3b8; font-size: 0.8rem;">Publicidad</span>
+                <span style="color: #94a3b8; font-size: 0.8rem;" data-i18n="common.labels.advertising">Publicidad</span>
             </div>
             <div class="footer-grid">
                 <div>
-                    <h4 style="color: white;">ConvertidorPro</h4>
-                    <p style="font-size: 0.9rem; color: #cbd5e1;">Herramientas digitales simples.</p>
+                    <h4 style="color: white;">Pro Conversion</h4>
+                    <p style="font-size: 0.9rem; color: #cbd5e1;" data-i18n="common.footer.tagline_short">Herramientas
+                        digitales simples.</p>
                 </div>
                 <div>
-                    <h4 style="color: white;">Legal</h4>
+                    <h4 style="color: white;" data-i18n="common.footer.legal">Legal</h4>
                     <ul style="list-style: none;">
-                        <li><a href="/pages/privacidad" style="color: #cbd5e1;">Política de Privacidad</a></li>
-                        <li><a href="/pages/terminos" style="color: #cbd5e1;">Términos de Servicio</a></li>
+                        <li><a href="/pages/privacidad" style="color: #cbd5e1;"
+                                data-i18n="common.footer.privacy">Política de Privacidad</a></li>
+                        <li><a href="/pages/terminos" style="color: #cbd5e1;" data-i18n="common.footer.terms">Términos
+                                de Servicio</a></li>
                     </ul>
                 </div>
             </div>
-            <div style="text-align: center; border-top: 1px solid #334155; padding-top: 24px; color: #94a3b8; font-size: 0.875rem;">
-                &copy; 2025 ConvertidorPro.
+            <div
+                style="text-align: center; border-top: 1px solid #334155; padding-top: 24px; color: #94a3b8; font-size: 0.875rem;">
+                <span data-i18n="common.footer.copyright">&copy; 2025 Pro Conversion.</span>
             </div>
         </div>
     </footer>
 
     <script src="js/navegacion.js"></script>
+    <script src="/js/i18n-setup.js"></script>
     <script src="js/utils.js"></script>
     <script src="js/qr-generator.js"></script>
     <script>
@@ -179,4 +222,5 @@
     </script>
     <script type="module" src="js/analytics.js"></script>
 </body>
+
 </html>

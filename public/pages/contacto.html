@@ -1,44 +1,72 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Contacta con ConvertidorPro. Estamos aquí para ayudarte con cualquier pregunta sobre nuestras herramientas de conversión.">
-    <meta name="keywords" content="contacto ConvertidorPro, soporte, ayuda, preguntas">
-    <meta name="author" content="ConvertidorPro">
+    <meta name="description"
+        content="Contacta con Pro Conversion. Estamos aquí para ayudarte con cualquier pregunta sobre nuestras herramientas de conversión.">
+    <meta name="keywords" content="contacto Pro Conversion, soporte, ayuda, preguntas">
+    <meta name="author" content="Pro Conversion">
     <meta name="robots" content="index, follow">
-    
+
     <!-- Google AdSense -->
     <meta name="google-adsense-account" content="ca-pub-2207512229687784">
-    
-    <title>Contacto - ConvertidorPro</title>
-    
+
+    <!-- HREFLANG -->
+    <link rel="alternate" hreflang="es" href="https://pro-conversion.com/pages/contacto?lng=es" />
+    <link rel="alternate" hreflang="en" href="https://pro-conversion.com/pages/contacto?lng=en" />
+    <link rel="alternate" hreflang="x-default" href="https://pro-conversion.com/pages/contacto" />
+
+    <title>Contacto - Pro Conversion</title>
+
     <!-- Canonical URL -->
-    <link rel="canonical" href="https://ads2025-e4539.web.app/pages/contacto.html">
-    
+    <link rel="canonical" href="https://pro-conversion.com/pages/contacto.html">
+
     <link rel="stylesheet" href="../css/variables.css">
     <link rel="stylesheet" href="../css/base.css">
     <link rel="stylesheet" href="../css/layout.css">
     <link rel="stylesheet" href="../css/componentes.css">
     <link rel="stylesheet" href="../css/responsive.css">
-    
+
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2207512229687784"
-         crossorigin="anonymous"></script>
+        crossorigin="anonymous"></script>
+    <link rel="icon" href="../assets/images/proConversionLogo.png" type="image/png">
+
+    <!-- i18next Libraries -->
+    <script src="https://unpkg.com/i18next/dist/umd/i18next.min.js"></script>
+    <script src="https://unpkg.com/i18next-http-backend/i18nextHttpBackend.min.js"></script>
+    <script
+        src="https://unpkg.com/i18next-browser-languagedetector/dist/umd/i18nextBrowserLanguageDetector.min.js"></script>
+
+    <!-- Prevent FOUC -->
+    <style>
+        body {
+            visibility: hidden;
+        }
+    </style>
 </head>
+
 <body>
     <script src="../js/ad-visibility.js"></script>
     <header>
         <div class="container header-content">
-            <a href="/" style="font-weight: 800; font-size: 1.5rem; color: var(--color-primary);">ConvertidorPro</a>
+            <a href="/" style="font-weight: 800; font-size: 1.5rem; color: var(--color-primary);">Pro Conversion</a>
             <button class="mobile-menu-btn">☰</button>
             <nav class="nav-menu">
+                <select id="languageSwitcher" aria-label="Seleccionar idioma"
+                    style="margin-right: 15px; padding: 5px; border-radius: 4px;">
+                    <option value="es">Español</option>
+                    <option value="en">English</option>
+                </select>
                 <ul class="nav-list">
-                    <li><a href="/" class="nav-link">Inicio</a></li>
-                    <li><a href="/pages/herramienta" class="nav-link">Herramientas</a></li>
-                    <li><a href="/pages/contacto" class="nav-link active">Contacto</a></li>
+                    <li><a href="/" class="nav-link" data-i18n="common.nav.home">Inicio</a></li>
+                    <li><a href="/pages/herramienta" class="nav-link" data-i18n="common.nav.tools">Herramientas</a></li>
+                    <li><a href="/pages/contacto" class="nav-link active" data-i18n="common.nav.contact">Contacto</a>
+                    </li>
                 </ul>
             </nav>
         </div>
@@ -46,55 +74,59 @@
 
     <div class="container page-layout">
         <main>
-            <h1>Contáctanos</h1>
-            <p>¿Tienes alguna pregunta o sugerencia? Estamos aquí para ayudarte.</p>
+            <h1 data-i18n="pages.contact.h1">Contáctanos</h1>
+            <p data-i18n="pages.contact.subtitle">¿Tienes alguna pregunta o sugerencia? Estamos aquí para ayudarte.</p>
 
-            <!-- Contenedor para mensajes de estado (éxito/error) -->
+            <!-- Status message container -->
             <div id="form-message" style="display: none; padding: 15px; margin-bottom: 20px; border-radius: 8px;"></div>
 
             <div class="card" style="max-width: 600px;">
-                <!-- Agregamos id="contact-form" y quitamos action/method -->
                 <form id="contact-form">
-                    <!-- Configuración oculta para FormSubmit -->
+                    <!-- Hidden config for FormSubmit -->
                     <input type="hidden" name="_captcha" value="false">
                     <input type="hidden" name="_template" value="table">
-                    
+
                     <div class="form-group">
-                        <label for="nombre" class="form-label">Nombre</label>
+                        <label for="nombre" class="form-label" data-i18n="pages.contact.label_name">Nombre</label>
                         <input type="text" id="nombre" name="nombre" class="form-input" required>
                     </div>
-                    
+
                     <div class="form-group">
-                        <label for="email" class="form-label">Correo Electrónico</label>
+                        <label for="email" class="form-label" data-i18n="pages.contact.label_email">Correo
+                            Electrónico</label>
                         <input type="email" id="email" name="email" class="form-input" required>
                     </div>
-                    
+
                     <div class="form-group">
-                        <label for="asunto" class="form-label">Asunto</label>
+                        <label for="asunto" class="form-label" data-i18n="pages.contact.label_subject">Asunto</label>
                         <select id="asunto" name="asunto" class="form-input">
-                            <option value="Consulta General">Consulta General</option>
-                            <option value="Soporte Técnico">Soporte Técnico</option>
-                            <option value="Privacidad">Privacidad</option>
-                            <option value="Publicidad">Publicidad</option>
+                            <option value="Consulta General" data-i18n="pages.contact.subject_general">Consulta General
+                            </option>
+                            <option value="Soporte Técnico" data-i18n="pages.contact.subject_support">Soporte Técnico
+                            </option>
+                            <option value="Privacidad" data-i18n="pages.contact.subject_privacy">Privacidad</option>
+                            <option value="Publicidad" data-i18n="pages.contact.subject_advertising">Publicidad</option>
                         </select>
                     </div>
-                    
+
                     <div class="form-group">
-                        <label for="mensaje" class="form-label">Mensaje</label>
+                        <label for="mensaje" class="form-label" data-i18n="pages.contact.label_message">Mensaje</label>
                         <textarea id="mensaje" name="mensaje" rows="5" class="form-textarea" required></textarea>
                     </div>
-                    
-                    <button type="submit" id="submit-btn" class="btn btn--primary">Enviar Mensaje</button>
+
+                    <button type="submit" id="submit-btn" class="btn btn--primary"
+                        data-i18n="common.buttons.send">Enviar Mensaje</button>
                 </form>
             </div>
         </main>
 
         <aside style="padding-top: var(--spacing-xl);">
             <div class="card">
-                <h3>Información</h3>
-                <p><strong>Email:</strong> fede.barbo86@gmail.com</p>
-                <p><strong>Horario:</strong> Lunes a Viernes, 9:00 - 18:00</p>
-                <p style="margin-top: 16px; font-size: 0.9rem; color: var(--color-text-light);">
+                <h3 data-i18n="pages.contact.info_title">Información</h3>
+                <p><strong data-i18n="pages.contact.info_hours">Horario:</strong> <span
+                        data-i18n="pages.contact.info_hours_value">Lunes a Viernes, 9:00 - 18:00</span></p>
+                <p style="margin-top: 16px; font-size: 0.9rem; color: var(--color-text-light);"
+                    data-i18n="pages.contact.info_about">
                     Este sitio es operado por Federico B., comprometido con ofrecer herramientas gratuitas de calidad.
                 </p>
             </div>
@@ -104,13 +136,15 @@
     <footer>
         <div class="container">
             <div style="text-align: center; padding: 24px 0; color: #94a3b8;">
-                &copy; 2025 ConvertidorPro.
+                <span data-i18n="common.footer.copyright">&copy; 2025 Pro Conversion.</span>
             </div>
         </div>
     </footer>
-    <script src="../js/navegacion.js"></script>
-    <!-- Script del formulario de contacto -->
+    <script src="/js/navegacion.js"></script>
+    <script src="/js/i18n-setup.js"></script>
+    <!-- Contact form script -->
     <script src="../js/contact.js"></script>
     <script type="module" src="../js/analytics.js"></script>
 </body>
+
 </html>

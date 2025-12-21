@@ -1,9 +1,10 @@
 /**
  * Utilidades compartidas para todos los conversores
  * Manejo de archivos, validación, descargas y mensajes
+ * Con soporte para i18next cuando está disponible
  */
 
-const ConversionUtils = (function() {
+const ConversionUtils = (function () {
     'use strict';
 
     // =============================================
@@ -35,40 +36,57 @@ const ConversionUtils = (function() {
     }
 
     // =============================================
-    // MENSAJES UNIFORMES
+    // HELPER PARA TRADUCCIONES
+    // =============================================
+
+    /**
+     * Obtiene traducción si i18next está disponible, sino usa el fallback
+     * @param {string} key - Clave de traducción (ej: 'common.messages.success')
+     * @param {string} fallback - Texto por defecto si no hay traducción
+     * @returns {string}
+     */
+    function t(key, fallback) {
+        if (typeof i18next !== 'undefined' && i18next.isInitialized && i18next.exists(key)) {
+            return i18next.t(key);
+        }
+        return fallback;
+    }
+
+    // =============================================
+    // MENSAJES UNIFORMES (con soporte i18n)
     // =============================================
     const MESSAGES = {
         SUCCESS: {
-            conversion: '✓ Conversión completada. Tu archivo está listo para descargar.',
-            copy: '✓ Copiado al portapapeles.',
-            compress: '✓ Compresión completada.'
+            get conversion() { return t('common.messages.success', '✓ Conversión completada. Tu archivo está listo para descargar.'); },
+            get copy() { return t('common.messages.copied', '✓ Copiado al portapapeles.'); },
+            get compress() { return t('common.messages.compress_success', '✓ Compresión completada.'); }
         },
         ERROR: {
-            fileTooLarge: 'El archivo es demasiado grande. Tamaño máximo: 10 MB.',
-            invalidType: 'Tipo de archivo no soportado.',
-            readError: 'No se pudo leer el archivo. Verifica que no esté dañado.',
-            conversionError: 'Error durante la conversión. Intenta de nuevo.',
-            invalidBase64: 'El texto no es una cadena Base64 válida.',
-            csvParseError: 'Error al procesar el archivo CSV.',
-            jsonParseError: 'Error al procesar el archivo JSON.',
-            qrTooLong: 'El texto es demasiado largo para generar un QR válido.',
-            imageTooLarge: 'La imagen es demasiado grande. Se redimensionará automáticamente.',
-            noFile: 'Por favor selecciona un archivo.',
-            noText: 'Por favor ingresa texto para procesar.',
-            webpNotSupported: 'Tu navegador no soporta el formato WebP.'
+            get fileTooLarge() { return t('common.messages.max_size', 'El archivo es demasiado grande. Tamaño máximo: 10 MB.'); },
+            get invalidType() { return t('common.messages.invalid_file', 'Tipo de archivo no soportado.'); },
+            get readError() { return t('common.messages.read_error', 'No se pudo leer el archivo. Verifica que no esté dañado.'); },
+            get conversionError() { return t('common.messages.error', 'Error durante la conversión. Intenta de nuevo.'); },
+            get invalidBase64() { return t('common.messages.invalid_base64', 'El texto no es una cadena Base64 válida.'); },
+            get csvParseError() { return t('common.messages.csv_error', 'Error al procesar el archivo CSV.'); },
+            get jsonParseError() { return t('common.messages.json_error', 'Error al procesar el archivo JSON.'); },
+            get qrTooLong() { return t('common.messages.qr_too_long', 'El texto es demasiado largo para generar un QR válido.'); },
+            get imageTooLarge() { return t('common.messages.image_too_large', 'La imagen es demasiado grande. Se redimensionará automáticamente.'); },
+            get noFile() { return t('common.messages.no_file', 'Por favor selecciona un archivo.'); },
+            get noText() { return t('common.messages.no_text', 'Por favor ingresa texto para procesar.'); },
+            get webpNotSupported() { return t('common.messages.webp_not_supported', 'Tu navegador no soporta el formato WebP.'); }
         },
         INFO: {
-            processing: 'Procesando...',
-            dragDrop: 'Arrastra tu archivo aquí o haz clic para seleccionar',
-            privacy: '🔒 Los archivos no se suben a ningún servidor. Todo se procesa en tu navegador.',
-            transparencyWarning: 'Las imágenes con transparencia tendrán fondo blanco en JPG.'
+            get processing() { return t('common.messages.converting', 'Procesando...'); },
+            get dragDrop() { return t('common.dropzone.drag_file', 'Arrastra tu archivo aquí o haz clic para seleccionar'); },
+            get privacy() { return t('common.messages.privacy', '🔒 Los archivos no se suben a ningún servidor. Todo se procesa en tu navegador.'); },
+            get transparencyWarning() { return t('common.messages.transparency_warning', 'Las imágenes con transparencia tendrán fondo blanco en JPG.'); }
         }
     };
 
     // =============================================
     // VALIDACIÓN DE ARCHIVOS
     // =============================================
-    
+
     /**
      * Valida un archivo según tipo y tamaño
      * @param {File} file - Archivo a validar
@@ -79,14 +97,14 @@ const ConversionUtils = (function() {
         if (!file) {
             return { valid: false, error: MESSAGES.ERROR.noFile };
         }
-        
+
         if (file.size > CONFIG.MAX_FILE_SIZE) {
             return { valid: false, error: MESSAGES.ERROR.fileTooLarge };
         }
-        
+
         // Validación híbrida: MIME type + extensión (especialmente para iOS)
         let isValidType = false;
-        
+
         if (file.type && allowedTypes.includes(file.type)) {
             // MIME type válido
             isValidType = true;
@@ -100,7 +118,7 @@ const ConversionUtils = (function() {
                 'text/csv': ['csv'],
                 'application/json': ['json']
             };
-            
+
             for (const mimeType of allowedTypes) {
                 if (extensionMap[mimeType] && extensionMap[mimeType].includes(extension)) {
                     isValidType = true;
@@ -108,11 +126,11 @@ const ConversionUtils = (function() {
                 }
             }
         }
-        
+
         if (!isValidType) {
             return { valid: false, error: MESSAGES.ERROR.invalidType };
         }
-        
+
         return { valid: true, error: null };
     }
 
@@ -213,11 +231,11 @@ const ConversionUtils = (function() {
      */
     function calculateDimensions(width, height) {
         const maxDim = CONFIG.MAX_IMAGE_DIMENSION;
-        
+
         if (width <= maxDim && height <= maxDim) {
             return { width, height, scaled: false };
         }
-        
+
         const ratio = Math.min(maxDim / width, maxDim / height);
         return {
             width: Math.round(width * ratio),
@@ -239,10 +257,10 @@ const ConversionUtils = (function() {
             try {
                 const dims = calculateDimensions(img.width, img.height);
                 const { canvas, ctx } = getSharedCanvas();
-                
+
                 canvas.width = dims.width;
                 canvas.height = dims.height;
-                
+
                 // Limpiar y rellenar fondo si es JPG (no soporta transparencia)
                 if (format === 'image/jpeg') {
                     ctx.fillStyle = bgColor;
@@ -250,9 +268,9 @@ const ConversionUtils = (function() {
                 } else {
                     ctx.clearRect(0, 0, canvas.width, canvas.height);
                 }
-                
+
                 ctx.drawImage(img, 0, 0, dims.width, dims.height);
-                
+
                 canvas.toBlob(
                     (blob) => {
                         if (blob) {
@@ -333,7 +351,7 @@ const ConversionUtils = (function() {
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
-        
+
         // Revocar URL después de un breve delay
         setTimeout(() => revokeTempURL(url), 1000);
     }
@@ -461,7 +479,7 @@ const ConversionUtils = (function() {
      */
     function resetFileInput(inputElement) {
         if (!inputElement) return;
-        
+
         // Solo limpiar el valor, no cambiar el tipo
         inputElement.value = '';
     }
@@ -475,60 +493,60 @@ const ConversionUtils = (function() {
      */
     function setupFileInputListener(fileInput, onFileSelected) {
         if (!fileInput) return fileInput;
-        
+
         // NO clonar: directamente limpiar y asignar listeners al input existente
         // Esto evita problemas con el diálogo nativo en iOS
-        
+
         // Marcar que este input ya fue configurado para evitar múltiples listeners
         if (fileInput._fileListenerConfigured) {
             return fileInput;
         }
-        
+
         // Crear wrapper para evitar listeners duplicados y ejecuciones múltiples
         const wrappedHandler = (e) => {
             const files = e.target.files;
-            
+
             if (!files || files.length === 0) {
                 return;
             }
-            
+
             // Evitar doble ejecución
             if (fileInput._isProcessing) return;
             fileInput._isProcessing = true;
 
             // Obtener el primer archivo
             const file = files[0];
-            
+
             // Ejecutar callback de forma asíncrona con manejo de errores
             setTimeout(() => {
                 try {
                     onFileSelected(file);
                 } catch (error) {
                     console.error('Error processing file:', error);
-                    showError(document.body, 'Error al procesar el archivo. Intenta de nuevo.');
+                    showError(document.body, MESSAGES.ERROR.conversionError);
                 }
-                
+
                 // IMPORTANTE: Reset el flag después de procesar
                 // Esto permite que el próximo clic en el botón funcione
                 fileInput._isProcessing = false;
-                
+
                 // Limpiar el value para permitir seleccionar el MISMO archivo de nuevo
                 // Esto se hace AQUÍ, no en el listener de click, para no interferir con el diálogo
                 fileInput.value = '';
             }, 0);
         };
-        
+
         // Escuchar únicamente el evento change
         fileInput.addEventListener('change', wrappedHandler);
-        
+
         // Reset del flag al hacer click para asegurar que está listo
         fileInput.addEventListener('click', () => {
             fileInput._isProcessing = false;
         });
-        
+
         // Marcar como configurado
         fileInput._fileListenerConfigured = true;
-        
+
         // Retornar el input sin clonar
         return fileInput;
     }
@@ -572,6 +590,7 @@ const ConversionUtils = (function() {
     return {
         CONFIG,
         MESSAGES,
+        t, // Exponer helper de traducción
         // Validación
         validateFile,
         validateImageFile,

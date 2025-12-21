@@ -1,13 +1,18 @@
 /**
  * Base64 Encoder/Decoder (Bidireccional)
  * Codifica y decodifica texto a/desde Base64
- * Soporta UTF-8
+ * Soporta UTF-8 e i18n
  */
 
-const Base64Converter = (function() {
+const Base64Converter = (function () {
     'use strict';
 
     let elements = {};
+
+    // Helper para obtener traducciones
+    function t(key, fallback) {
+        return ConversionUtils.t(key, fallback);
+    }
 
     function init() {
         elements = {
@@ -63,15 +68,19 @@ const Base64Converter = (function() {
         }
     }
 
+    function getCharactersLabel() {
+        return t('common.labels.characters', 'caracteres');
+    }
+
     function updateInputCount() {
         if (elements.inputCharCount && elements.inputText) {
-            elements.inputCharCount.textContent = `${elements.inputText.value.length} caracteres`;
+            elements.inputCharCount.textContent = `${elements.inputText.value.length} ${getCharactersLabel()}`;
         }
     }
 
     function updateOutputCount() {
         if (elements.outputCharCount && elements.outputText) {
-            elements.outputCharCount.textContent = `${elements.outputText.value.length} caracteres`;
+            elements.outputCharCount.textContent = `${elements.outputText.value.length} ${getCharactersLabel()}`;
         }
     }
 
@@ -80,7 +89,7 @@ const Base64Converter = (function() {
      */
     function encode() {
         const input = elements.inputText ? elements.inputText.value : '';
-        
+
         if (!input.trim()) {
             ConversionUtils.showError(elements.messageArea, ConversionUtils.MESSAGES.ERROR.noText);
             return;
@@ -99,8 +108,8 @@ const Base64Converter = (function() {
                 updateOutputCount();
             }
 
-            ConversionUtils.showSuccess(elements.messageArea, 
-                '✓ Texto codificado a Base64 correctamente.');
+            ConversionUtils.showSuccess(elements.messageArea,
+                t('common.messages.encoded_success', '✓ Texto codificado a Base64 correctamente.'));
 
         } catch (error) {
             console.error('Error al codificar:', error);
@@ -113,7 +122,7 @@ const Base64Converter = (function() {
      */
     function decode() {
         const input = elements.inputText ? elements.inputText.value.trim() : '';
-        
+
         if (!input) {
             ConversionUtils.showError(elements.messageArea, ConversionUtils.MESSAGES.ERROR.noText);
             return;
@@ -132,7 +141,7 @@ const Base64Converter = (function() {
             for (let i = 0; i < binaryString.length; i++) {
                 bytes[i] = binaryString.charCodeAt(i);
             }
-            
+
             // Decodificar UTF-8
             const text = new TextDecoder('utf-8').decode(bytes);
 
@@ -141,8 +150,8 @@ const Base64Converter = (function() {
                 updateOutputCount();
             }
 
-            ConversionUtils.showSuccess(elements.messageArea, 
-                '✓ Base64 decodificado correctamente.');
+            ConversionUtils.showSuccess(elements.messageArea,
+                t('common.messages.decoded_success', '✓ Base64 decodificado correctamente.'));
 
         } catch (error) {
             console.error('Error al decodificar:', error);
@@ -155,17 +164,17 @@ const Base64Converter = (function() {
      */
     function isValidBase64(str) {
         if (!str || str.length === 0) return false;
-        
+
         // Remover espacios en blanco
         str = str.replace(/\s/g, '');
-        
+
         // Verificar caracteres válidos y longitud
         const base64Regex = /^[A-Za-z0-9+/]*={0,2}$/;
         if (!base64Regex.test(str)) return false;
-        
+
         // La longitud debe ser múltiplo de 4
         if (str.length % 4 !== 0) return false;
-        
+
         try {
             atob(str);
             return true;
@@ -179,9 +188,10 @@ const Base64Converter = (function() {
      */
     async function copyOutput() {
         const output = elements.outputText ? elements.outputText.value : '';
-        
+
         if (!output.trim()) {
-            ConversionUtils.showError(elements.messageArea, 'No hay texto para copiar.');
+            ConversionUtils.showError(elements.messageArea,
+                t('common.messages.no_copy_text', 'No hay texto para copiar.'));
             return;
         }
 
@@ -189,7 +199,8 @@ const Base64Converter = (function() {
         if (success) {
             ConversionUtils.showSuccess(elements.messageArea, ConversionUtils.MESSAGES.SUCCESS.copy);
         } else {
-            ConversionUtils.showError(elements.messageArea, 'No se pudo copiar al portapapeles.');
+            ConversionUtils.showError(elements.messageArea,
+                t('common.messages.copy_failed', 'No se pudo copiar al portapapeles.'));
         }
     }
 
@@ -206,7 +217,8 @@ const Base64Converter = (function() {
         updateInputCount();
         updateOutputCount();
 
-        ConversionUtils.showInfo(elements.messageArea, 'Textos intercambiados.');
+        ConversionUtils.showInfo(elements.messageArea,
+            t('common.messages.swapped', 'Textos intercambiados.'));
     }
 
     /**

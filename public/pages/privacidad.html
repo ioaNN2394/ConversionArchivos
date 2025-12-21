@@ -1,44 +1,71 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Política de Privacidad de ConvertidorPro. Conoce cómo protegemos tus datos y tu privacidad al usar nuestras herramientas.">
-    <meta name="keywords" content="política privacidad, protección datos, ConvertidorPro privacidad">
-    <meta name="author" content="ConvertidorPro">
+    <meta name="description"
+        content="Política de Privacidad de Pro Conversion. Conoce cómo protegemos tus datos y tu privacidad al usar nuestras herramientas.">
+    <meta name="keywords" content="política privacidad, Pro Conversion, protección datos, privacidad online">
+    <meta name="author" content="Pro Conversion">
     <meta name="robots" content="index, follow">
-    
+
     <!-- Google AdSense -->
     <meta name="google-adsense-account" content="ca-pub-2207512229687784">
-    
-    <title>Política de Privacidad - ConvertidorPro</title>
-    
+
+    <!-- HREFLANG -->
+    <link rel="alternate" hreflang="es" href="https://pro-conversion.com/pages/privacidad?lng=es" />
+    <link rel="alternate" hreflang="en" href="https://pro-conversion.com/pages/privacidad?lng=en" />
+    <link rel="alternate" hreflang="x-default" href="https://pro-conversion.com/pages/privacidad" />
+
+    <title>Política de Privacidad - Pro Conversion</title>
+
     <!-- Canonical URL -->
-    <link rel="canonical" href="https://ads2025-e4539.web.app/pages/privacidad.html">
-    
+    <link rel="canonical" href="https://pro-conversion.com/pages/privacidad.html">
+
     <link rel="stylesheet" href="../css/variables.css">
     <link rel="stylesheet" href="../css/base.css">
     <link rel="stylesheet" href="../css/layout.css">
     <link rel="stylesheet" href="../css/componentes.css">
     <link rel="stylesheet" href="../css/responsive.css">
-    
+
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2207512229687784"
-         crossorigin="anonymous"></script>
+        crossorigin="anonymous"></script>
+    <link rel="icon" href="../assets/images/proConversionLogo.png" type="image/png">
+
+    <!-- i18next Libraries -->
+    <script src="https://unpkg.com/i18next/dist/umd/i18next.min.js"></script>
+    <script src="https://unpkg.com/i18next-http-backend/i18nextHttpBackend.min.js"></script>
+    <script
+        src="https://unpkg.com/i18next-browser-languagedetector/dist/umd/i18nextBrowserLanguageDetector.min.js"></script>
+
+    <!-- Prevent FOUC -->
+    <style>
+        body {
+            visibility: hidden;
+        }
+    </style>
 </head>
+
 <body>
     <script src="../js/ad-visibility.js"></script>
     <header>
         <div class="container header-content">
-            <a href="/" style="font-weight: 800; font-size: 1.5rem; color: var(--color-primary);">ConvertidorPro</a>
+            <a href="/" style="font-weight: 800; font-size: 1.5rem; color: var(--color-primary);">Pro Conversion</a>
             <button class="mobile-menu-btn">☰</button>
             <nav class="nav-menu">
+                <select id="languageSwitcher" aria-label="Seleccionar idioma"
+                    style="margin-right: 15px; padding: 5px; border-radius: 4px;">
+                    <option value="es">Español</option>
+                    <option value="en">English</option>
+                </select>
                 <ul class="nav-list">
-                    <li><a href="/" class="nav-link">Inicio</a></li>
-                    <li><a href="/pages/herramienta" class="nav-link">Herramientas</a></li>
-                    <li><a href="/pages/contacto" class="nav-link">Contacto</a></li>
+                    <li><a href="/" class="nav-link" data-i18n="common.nav.home">Inicio</a></li>
+                    <li><a href="/pages/herramienta" class="nav-link" data-i18n="common.nav.tools">Herramientas</a></li>
+                    <li><a href="/pages/contacto" class="nav-link" data-i18n="common.nav.contact">Contacto</a></li>
                 </ul>
             </nav>
         </div>
@@ -46,48 +73,64 @@
 
     <div class="container">
         <main style="max-width: 800px; margin: 0 auto;">
-            <h1>Política de Privacidad</h1>
-            <p>Última actualización: 6 de Diciembre de 2025</p>
+            <h1 data-i18n="pages.privacy.h1">Política de Privacidad</h1>
+            <p data-i18n="pages.privacy.last_updated">Última actualización: 6 de Diciembre de 2025</p>
 
             <section>
-                <h2>1. Introducción</h2>
-                <p>En ConvertidorPro, accesible desde nuestra web, una de nuestras principales prioridades es la privacidad de nuestros visitantes. Este documento de Política de Privacidad contiene tipos de información que se recopila y registra por ConvertidorPro y cómo la usamos.</p>
+                <h2 data-i18n="pages.privacy.section1_title">1. Introducción</h2>
+                <p data-i18n="pages.privacy.section1_text">En Pro Conversion, accesible desde nuestra web, una de
+                    nuestras principales prioridades es la privacidad de nuestros visitantes. Este documento de Política
+                    de Privacidad contiene tipos de información que se recopila y registra por Pro Conversion y cómo la
+                    usamos.</p>
             </section>
 
             <section>
-                <h2>2. Archivos de Registro (Log Files)</h2>
-                <p>ConvertidorPro sigue un procedimiento estándar de uso de archivos de registro. Estos archivos registran a los visitantes cuando visitan sitios web. La información recopilada incluye direcciones de protocolo de Internet (IP), tipo de navegador, proveedor de servicios de Internet (ISP), fecha y hora, páginas de referencia/salida y posiblemente el número de clics.</p>
+                <h2 data-i18n="pages.privacy.section2_title">2. Archivos de Registro (Log Files)</h2>
+                <p data-i18n="pages.privacy.section2_text">Pro Conversion sigue un procedimiento estándar de uso de
+                    archivos de registro. Estos archivos registran a los visitantes cuando visitan sitios web. La
+                    información recopilada incluye direcciones de protocolo de Internet (IP), tipo de navegador,
+                    proveedor de servicios de Internet (ISP), fecha y hora, páginas de referencia/salida y posiblemente
+                    el número de clics.</p>
             </section>
 
             <section>
-                <h2>3. Cookies y Web Beacons</h2>
-                <p>Como cualquier otro sitio web, ConvertidorPro utiliza 'cookies'. Estas cookies se utilizan para almacenar información, incluidas las preferencias de los visitantes y las páginas del sitio web que el visitante accedió o visitó. La información se utiliza para optimizar la experiencia de los usuarios personalizando el contenido de nuestra página web según el tipo de navegador de los visitantes y/u otra información.</p>
+                <h2 data-i18n="pages.privacy.section3_title">3. Cookies y Web Beacons</h2>
+                <p data-i18n="pages.privacy.section3_text">Como cualquier otro sitio web, Pro Conversion utiliza
+                    'cookies'. Estas cookies se utilizan para almacenar información, incluidas las preferencias de los
+                    visitantes y las páginas del sitio web que el visitante accedió o visitó.</p>
             </section>
 
             <section>
-                <h2>4. Google DoubleClick DART Cookie</h2>
-                <p>Google es uno de los proveedores externos en nuestro sitio. También utiliza cookies, conocidas como cookies DART, para publicar anuncios a los visitantes de nuestro sitio en función de su visita a este y a otros sitios en Internet. Sin embargo, los visitantes pueden optar por rechazar el uso de cookies DART visitando la Política de privacidad de la red de contenido y anuncios de Google en la siguiente URL: <a href="https://policies.google.com/technologies/ads" target="_blank" rel="nofollow">https://policies.google.com/technologies/ads</a></p>
+                <h2 data-i18n="pages.privacy.section4_title">4. Google DoubleClick DART Cookie</h2>
+                <p data-i18n="pages.privacy.section4_text">Google es uno de los proveedores externos en nuestro sitio.
+                    También utiliza cookies, conocidas como cookies DART, para publicar anuncios a los visitantes de
+                    nuestro sitio en función de su visita.</p>
             </section>
 
             <section>
-                <h2>5. Políticas de Privacidad de Socios Publicitarios</h2>
-                <p>Los servidores de anuncios de terceros o las redes publicitarias utilizan tecnologías como cookies, JavaScript o Web Beacons que se utilizan en sus respectivos anuncios y enlaces que aparecen en ConvertidorPro, que se envían directamente al navegador de los usuarios. Reciben automáticamente su dirección IP cuando esto ocurre. Estas tecnologías se utilizan para medir la efectividad de sus campañas publicitarias y/o para personalizar el contenido publicitario que ve en los sitios web que visita.</p>
-                <p>Tenga en cuenta que ConvertidorPro no tiene acceso ni control sobre estas cookies que utilizan los anunciantes de terceros.</p>
+                <h2 data-i18n="pages.privacy.section5_title">5. Políticas de Privacidad de Socios Publicitarios</h2>
+                <p data-i18n="pages.privacy.section5_text">Los servidores de anuncios de terceros o las redes
+                    publicitarias utilizan tecnologías como cookies, JavaScript o Web Beacons que se utilizan en sus
+                    respectivos anuncios.</p>
             </section>
 
             <section>
-                <h2>6. Privacidad de Terceros</h2>
-                <p>La Política de Privacidad de ConvertidorPro no se aplica a otros anunciantes o sitios web. Por lo tanto, le recomendamos que consulte las respectivas Políticas de Privacidad de estos servidores de anuncios de terceros para obtener información más detallada. Puede incluir sus prácticas e instrucciones sobre cómo optar por no participar en ciertas opciones.</p>
+                <h2 data-i18n="pages.privacy.section6_title">6. Privacidad de Terceros</h2>
+                <p data-i18n="pages.privacy.section6_text">La Política de Privacidad de Pro Conversion no se aplica a
+                    otros anunciantes o sitios web.</p>
             </section>
 
             <section>
-                <h2>7. Información para Niños</h2>
-                <p>Otra parte de nuestra prioridad es agregar protección para los niños mientras usan Internet. Alentamos a los padres y tutores a observar, participar y/o monitorear y guiar su actividad en línea. ConvertidorPro no recopila a sabiendas ninguna Información de Identificación Personal de niños menores de 13 años.</p>
+                <h2 data-i18n="pages.privacy.section7_title">7. Información para Niños</h2>
+                <p data-i18n="pages.privacy.section7_text">Pro Conversion no recopila a sabiendas ninguna Información de
+                    Identificación Personal de niños menores de 13 años.</p>
             </section>
-            
+
             <section>
-                <h2>8. Contacto</h2>
-                <p>Si tiene preguntas adicionales o requiere más información sobre nuestra Política de Privacidad, no dude en contactarnos a través de nuestro formulario de contacto o al email: privacidad@tudominio.com</p>
+                <h2 data-i18n="pages.privacy.section8_title">8. Contacto</h2>
+                <p data-i18n="pages.privacy.section8_text">Si tiene preguntas adicionales o requiere más información
+                    sobre nuestra Política de Privacidad, no dude en contactarnos a través de nuestro formulario de
+                    contacto.</p>
             </section>
         </main>
     </div>
@@ -95,11 +138,13 @@
     <footer>
         <div class="container">
             <div style="text-align: center; padding: 24px 0; color: #94a3b8;">
-                &copy; 2025 ConvertidorPro.
+                <span data-i18n="common.footer.copyright">&copy; 2025 Pro Conversion.</span>
             </div>
         </div>
     </footer>
-    <script src="../js/navegacion.js"></script>
+    <script src="/js/navegacion.js"></script>
+    <script src="/js/i18n-setup.js"></script>
     <script type="module" src="../js/analytics.js"></script>
 </body>
+
 </html>

@@ -1,73 +1,105 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es"> <!-- JS will change this dynamically -->
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <!-- SEO Meta Tags -->
-    <meta name="description" content="ConvertidorPro: Herramientas gratuitas de conversión de archivos online. Convierte imágenes, documentos, CSV, JSON, genera códigos QR y más. 100% seguro y sin instalación.">
-    <meta name="keywords" content="convertidor online, convertir imágenes, JPG a PNG, PNG a JPG, comprimir JPG, imagen a PDF, CSV a JSON, generador QR, Base64, herramientas gratis">
-    <meta name="author" content="ConvertidorPro">
+    <meta name="description"
+        content="Pro Conversion: Herramientas gratuitas de conversión de archivos online. Convierte imágenes, documentos, CSV, JSON, genera códigos QR y más. 100% seguro y sin instalación.">
+    <meta name="keywords"
+        content="convertidor online, convertir imágenes, JPG a PNG, PNG a JPG, comprimir JPG, imagen a PDF, CSV a JSON, generador QR, Base64, herramientas gratis">
+    <meta name="author" content="Pro Conversion">
     <meta name="robots" content="index, follow">
-    
+
     <!-- Google Search Console Verification -->
     <meta name="google-site-verification" content="xGvgU0m8j4FLF2Kz2zPvJKq3Vn48cMx3EhZcWUEbJsw" />
-    
+
+    <!-- HREFLANG: Required for Google -->
+    <link rel="alternate" hreflang="es" href="https://pro-conversion.com/?lng=es" />
+    <link rel="alternate" hreflang="en" href="https://pro-conversion.com/?lng=en" />
+    <link rel="alternate" hreflang="x-default" href="https://pro-conversion.com/" />
+
     <!-- Google AdSense -->
     <meta name="google-adsense-account" content="ca-pub-2207512229687784">
-    
-    <title>ConvertidorPro - Herramientas de Conversión Online Gratuitas | Imágenes, PDF, QR</title>
-    
+
+    <title>Pro Conversion - Herramientas de Conversión Online Gratuitas | Imágenes, PDF, QR</title>
+    <!-- Note: Title will be updated by i18n-setup.js -->
+
     <!-- Canonical URL -->
-    <link rel="canonical" href="https://ads2025-e4539.web.app/">
-    
+    <!-- Canonical URL handled above -->
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://ads2025-e4539.web.app/">
-    <meta property="og:title" content="ConvertidorPro - Herramientas de Conversión Online Gratuitas">
-    <meta property="og:description" content="Convierte imágenes, documentos, CSV, JSON, genera códigos QR y más. 100% gratis, seguro y sin instalación.">
-    <meta property="og:image" content="https://ads2025-e4539.web.app/assets/images/og-image.png">
+    <meta property="og:url" content="https://pro-conversion.com/">
+    <meta property="og:title" content="Pro Conversion - Herramientas de Conversión Online Gratuitas">
+    <meta property="og:description"
+        content="Convierte imágenes, documentos, CSV, JSON, genera códigos QR y más. 100% gratis, seguro y sin instalación.">
+    <meta property="og:image" content="https://pro-conversion.com/assets/images/og-image.png">
     <meta property="og:locale" content="es_ES">
-    <meta property="og:site_name" content="ConvertidorPro">
-    
+    <meta property="og:site_name" content="Pro Conversion">
+
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="https://ads2025-e4539.web.app/">
-    <meta name="twitter:title" content="ConvertidorPro - Herramientas de Conversión Online Gratuitas">
-    <meta name="twitter:description" content="Convierte imágenes, documentos, CSV, JSON, genera códigos QR y más. 100% gratis y seguro.">
-    <meta name="twitter:image" content="https://ads2025-e4539.web.app/assets/images/og-image.png">
-    
-    <!-- Preconnect para rendimiento -->
+    <meta name="twitter:url" content="https://pro-conversion.com/">
+    <meta name="twitter:title" content="Pro Conversion - Herramientas de Conversión Online Gratuitas">
+    <meta name="twitter:description"
+        content="Convierte imágenes, documentos, CSV, JSON, genera códigos QR y más. 100% gratis y seguro.">
+    <meta name="twitter:image" content="https://pro-conversion.com/assets/images/og-image.png">
+
+    <!-- Preconnect for performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    
-    <!-- Fuentes -->
+
+    <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- Estilos -->
+
+    <!-- Styles -->
     <link rel="stylesheet" href="css/variables.css">
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/layout.css">
     <link rel="stylesheet" href="css/componentes.css">
     <link rel="stylesheet" href="css/responsive.css">
-    
+
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2207512229687784"
-         crossorigin="anonymous"></script>
+        crossorigin="anonymous"></script>
+    <link rel="icon" href="assets/images/proConversionLogo.png" type="image/png">
+
+    <!-- i18next Libraries from CDN -->
+    <script src="https://unpkg.com/i18next/dist/umd/i18next.min.js"></script>
+    <script src="https://unpkg.com/i18next-http-backend/i18nextHttpBackend.min.js"></script>
+    <script
+        src="https://unpkg.com/i18next-browser-languagedetector/dist/umd/i18nextBrowserLanguageDetector.min.js"></script>
+
+    <!-- Prevent FOUC -->
+    <style>
+        body {
+            visibility: hidden;
+        }
+    </style>
 </head>
+
 <body>
     <script src="js/ad-visibility.js"></script>
     <header>
         <div class="container header-content">
-            <a href="/" style="font-weight: 800; font-size: 1.5rem; color: var(--color-primary);">ConvertidorPro</a>
-            
+            <a href="/" style="font-weight: 800; font-size: 1.5rem; color: var(--color-primary);">Pro Conversion</a>
+
             <button class="mobile-menu-btn" aria-label="Abrir menú" aria-expanded="false">☰</button>
-            
+
             <nav class="nav-menu">
+                <!-- Language Selector -->
+                <select id="languageSwitcher" aria-label="Seleccionar idioma"
+                    style="margin-right: 15px; padding: 5px; border-radius: 4px;">
+                    <option value="es">Español</option>
+                    <option value="en">English</option>
+                </select>
                 <ul class="nav-list">
-                    <li><a href="/" class="nav-link active">Inicio</a></li>
-                    <li><a href="/pages/herramienta" class="nav-link">Herramientas</a></li>
-                    <li><a href="/pages/contacto" class="nav-link">Contacto</a></li>
+                    <li><a href="/" class="nav-link active" data-i18n="common.nav.home">Inicio</a></li>
+                    <li><a href="/pages/herramienta" class="nav-link" data-i18n="common.nav.tools">Herramientas</a></li>
+                    <li><a href="/pages/contacto" class="nav-link" data-i18n="common.nav.contact">Contacto</a></li>
                 </ul>
             </nav>
         </div>
@@ -76,94 +108,135 @@
     <div class="container page-layout">
         <main>
             <section class="hero" style="text-align: center; padding: 40px 0;">
-                <h1>Convierte tus archivos al instante</h1>
-                <p style="font-size: 1.2rem; margin: 0 auto 32px; color: var(--color-text-light);">
+                <h1 data-i18n="pages.home.hero_title">Convierte tus archivos al instante</h1>
+                <p style="font-size: 1.2rem; margin: 0 auto 32px; color: var(--color-text-light);"
+                    data-i18n="pages.home.hero_subtitle">
                     La solución más rápida y segura para transformar documentos, imágenes y audio sin instalar software.
                 </p>
-                <a href="/pages/herramienta" class="btn btn--primary">Ir a las Herramientas</a>
+                <a href="/pages/herramienta" class="btn btn--primary" data-i18n="common.buttons.go_to_tools">Ir a las
+                    Herramientas</a>
             </section>
 
-            <!-- Bloque AdSense 2: Contenido Central -->
+            <!-- AdSense Block 2: Central Content -->
             <div class="ad-container ad-container--content">
                 <!-- Google AdSense Code Placeholder -->
-                <span style="color: #94a3b8; font-size: 0.8rem;">Publicidad</span>
+                <span style="color: #94a3b8; font-size: 0.8rem;" data-i18n="common.labels.advertising">Publicidad</span>
             </div>
 
             <section id="features" style="margin-top: 40px;">
-                <h2>¿Por qué usar nuestro convertidor?</h2>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-top: 24px;">
+                <h2 data-i18n="pages.home.features_title">¿Por qué usar nuestro convertidor?</h2>
+                <div
+                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-top: 24px;">
                     <article class="card">
-                        <h3>Rápido y Eficiente</h3>
-                        <p>Nuestros algoritmos optimizados procesan tus archivos en segundos, ahorrándote tiempo valioso en tu flujo de trabajo.</p>
+                        <h3 data-i18n="pages.home.feature_fast_title">Rápido y Eficiente</h3>
+                        <p data-i18n="pages.home.feature_fast_desc">Nuestros algoritmos optimizados procesan tus
+                            archivos en segundos, ahorrándote tiempo valioso
+                            en tu flujo de trabajo.</p>
                     </article>
                     <article class="card">
-                        <h3>100% Seguro</h3>
-                        <p>Tus archivos se eliminan automáticamente de nuestros servidores después de la conversión. Respetamos tu privacidad.</p>
+                        <h3 data-i18n="pages.home.feature_secure_title">100% Seguro</h3>
+                        <p data-i18n="pages.home.feature_secure_desc">Tus archivos se eliminan automáticamente de
+                            nuestros servidores después de la conversión.
+                            Respetamos tu privacidad.</p>
                     </article>
                     <article class="card">
-                        <h3>Sin Instalaciones</h3>
-                        <p>Todo funciona en la nube. No necesitas descargar software sospechoso ni plugins adicionales en tu navegador.</p>
+                        <h3 data-i18n="pages.home.feature_noinstall_title">Sin Instalaciones</h3>
+                        <p data-i18n="pages.home.feature_noinstall_desc">Todo funciona en la nube. No necesitas
+                            descargar software sospechoso ni plugins adicionales
+                            en tu navegador.</p>
+                    </article>
+                    <article class="card">
+                        <h3 data-i18n="pages.home.feature_free_title">100% Gratuito</h3>
+                        <p data-i18n="pages.home.feature_free_desc">Ofrecemos todas nuestras herramientas de conversión
+                            sin costo alguno. Sin límites de uso ni
+                            suscripciones ocultas.</p>
                     </article>
                 </div>
             </section>
 
             <section style="margin-top: 60px;">
-                <h2>Formatos Soportados</h2>
-                <p>Trabajamos constantemente para agregar más formatos. Actualmente soportamos las conversiones más populares del mercado para asegurar compatibilidad total.</p>
-                <!-- Placeholder para lista de formatos -->
+                <h2 data-i18n="pages.home.formats_title">Formatos Soportados</h2>
+                <p data-i18n="pages.home.formats_desc">Trabajamos constantemente para agregar más formatos. Actualmente
+                    soportamos las conversiones más
+                    populares del mercado para asegurar compatibilidad total.</p>
+                <!-- Placeholder for formats list -->
             </section>
         </main>
 
         <aside style="padding-top: var(--spacing-xl);">
-            <!-- Bloque AdSense 1: Sidebar -->
+            <!-- AdSense Block 1: Sidebar -->
             <div class="ad-container ad-container--top">
                 <!-- Google AdSense Code Placeholder -->
-                <span style="color: #94a3b8; font-size: 0.8rem;">Publicidad</span>
+                <span style="color: #94a3b8; font-size: 0.8rem;" data-i18n="common.labels.advertising">Publicidad</span>
             </div>
-            
+
             <div class="card" style="margin-top: 24px;">
-                <h3>Novedades</h3>
-                <p style="font-size: 0.9rem; color: var(--color-text-light);">Estamos actualizando nuestra plataforma para soportar conversión de video en 4K. ¡Pronto disponible!</p>
+                <h3 data-i18n="pages.home.news_title">Novedades</h3>
+                <p style="font-size: 0.9rem; color: var(--color-text-light);" data-i18n="pages.home.news_text">Estamos
+                    actualizando nuestra plataforma
+                    para soportar conversión de video en 4K. ¡Pronto disponible!</p>
             </div>
         </aside>
     </div>
 
+    <!-- CONTENT SECTION (Vital for AdSense) -->
+    <section class="container info-content" style="margin-top: 50px; margin-bottom: 50px;">
+        <h2 data-i18n="pages.home.how_to_title">¿Cómo convertir archivos online?</h2>
+        <ul>
+            <li data-i18n="pages.home.step_1">Sube tu archivo haciendo clic en el botón azul.</li>
+            <li data-i18n="pages.home.step_2">Selecciona el formato de salida deseado.</li>
+            <li data-i18n="pages.home.step_3">Descarga tu archivo convertido al instante.</li>
+        </ul>
+        <p data-i18n="pages.home.adsense_text">Nuestra herramienta asegura la privacidad de tus documentos. Los archivos
+            se eliminan automáticamente después de la conversión. Soporta formatos de alta calidad para profesionales.
+        </p>
+    </section>
+
     <footer>
         <div class="container">
-            <!-- Bloque AdSense 3: Footer -->
+            <!-- AdSense Block 3: Footer -->
             <div class="ad-container ad-container--footer" style="margin: 0 auto 40px;">
                 <!-- Google AdSense Code Placeholder -->
-                <span style="color: #94a3b8; font-size: 0.8rem;">Publicidad</span>
+                <span style="color: #94a3b8; font-size: 0.8rem;" data-i18n="common.labels.advertising">Publicidad</span>
             </div>
 
             <div class="footer-grid">
                 <div>
-                    <h4 style="color: white;">ConvertidorPro</h4>
-                    <p style="font-size: 0.9rem; color: #cbd5e1;">Herramientas digitales simples para problemas complejos.</p>
+                    <h4 style="color: white;">Pro Conversion</h4>
+                    <p style="font-size: 0.9rem; color: #cbd5e1;" data-i18n="common.footer.tagline">Herramientas
+                        digitales simples para problemas
+                        complejos.</p>
                 </div>
                 <div>
-                    <h4 style="color: white;">Legal</h4>
+                    <h4 style="color: white;" data-i18n="common.footer.legal">Legal</h4>
                     <ul style="list-style: none;">
-                        <li><a href="pages/privacidad.html" style="color: #cbd5e1;">Política de Privacidad</a></li>
-                        <li><a href="pages/terminos.html" style="color: #cbd5e1;">Términos de Servicio</a></li>
+                        <li><a href="/pages/privacidad" style="color: #cbd5e1;"
+                                data-i18n="common.footer.privacy">Política de Privacidad</a></li>
+                        <li><a href="/pages/terminos" style="color: #cbd5e1;" data-i18n="common.footer.terms">Términos
+                                de Servicio</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 style="color: white;">Contacto</h4>
+                    <h4 style="color: white;" data-i18n="common.footer.contact_title">Contacto</h4>
                     <ul style="list-style: none;">
-                        <li><a href="pages/contacto.html" style="color: #cbd5e1;">Formulario de Contacto</a></li>
+                        <li><a href="/pages/contacto" style="color: #cbd5e1;"
+                                data-i18n="common.nav.contact">Contacto</a></li>
                         <li><span style="color: #cbd5e1;">info@tudominio.com</span></li>
                     </ul>
                 </div>
             </div>
-            <div style="text-align: center; border-top: 1px solid #334155; padding-top: 24px; color: #94a3b8; font-size: 0.875rem;">
-                &copy; 2025 ConvertidorPro. Todos los derechos reservados.
+            <div
+                style="text-align: center; border-top: 1px solid #334155; padding-top: 24px; color: #94a3b8; font-size: 0.875rem;">
+                <span data-i18n="common.footer.copyright">&copy; 2025 Pro Conversion. Todos los derechos
+                    reservados.</span>
             </div>
         </div>
     </footer>
 
     <script src="js/navegacion.js"></script>
+    <script src="/js/i18n-setup.js"></script>
     <script src="js/main.js"></script>
     <script type="module" src="js/analytics.js"></script>
 </body>
+
 </html>

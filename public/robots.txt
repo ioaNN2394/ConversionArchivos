@@ -1,5 +1,5 @@
-# Robots.txt para ConvertidorPro
-# https://ads2025-e4539.web.app
+# Robots.txt para Pro Conversion
+# https://pro-conversion.com
 
 User-agent: *
 Allow: /
@@ -10,4 +10,5 @@ Disallow: /private
 Disallow: /__/
 
 # Referencia al sitemap
-Sitemap: https://ads2025-e4539.web.app/sitemap.xml
+Sitemap: https://pro-conversion.com/sitemap.xml
+

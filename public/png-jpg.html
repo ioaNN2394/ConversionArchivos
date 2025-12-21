@@ -1,62 +1,91 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Convierte imágenes PNG a JPG gratis y online. Reduce el tamaño de archivo hasta un 80% manteniendo excelente calidad. 100% seguro, sin subir archivos.">
-    <meta name="keywords" content="PNG a JPG, convertir PNG JPG, reducir tamaño imagen, comprimir PNG, conversor online gratis, convertidor imágenes">
-    <meta name="author" content="ConvertidorPro">
+    <meta name="description"
+        content="Convierte imágenes PNG a JPG gratis y online. Reduce el tamaño de archivo hasta un 80% manteniendo excelente calidad. 100% seguro, sin subir archivos.">
+    <meta name="keywords"
+        content="PNG a JPG, convertir PNG JPG, reducir tamaño imagen, comprimir PNG, conversor online gratis, convertidor imágenes">
+    <meta name="author" content="Pro Conversion">
     <meta name="robots" content="index, follow">
-    
+
     <!-- Google AdSense -->
     <meta name="google-adsense-account" content="ca-pub-2207512229687784">
-    
-    <title>Convertir PNG a JPG Online Gratis - Reduce Tamaño | ConvertidorPro</title>
-    
+
+    <!-- HREFLANG -->
+    <link rel="alternate" hreflang="es" href="https://pro-conversion.com/png-jpg?lng=es" />
+    <link rel="alternate" hreflang="en" href="https://pro-conversion.com/png-jpg?lng=en" />
+    <link rel="alternate" hreflang="x-default" href="https://pro-conversion.com/png-jpg" />
+
+    <title>Convertir PNG a JPG Online Gratis - Reduce Tamaño | Pro Conversion</title>
+
     <!-- Canonical URL -->
-    <link rel="canonical" href="https://ads2025-e4539.web.app/png-jpg.html">
-    
+    <link rel="canonical" href="https://pro-conversion.com/png-jpg.html">
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://ads2025-e4539.web.app/png-jpg.html">
-    <meta property="og:title" content="Convertir PNG a JPG Online Gratis - ConvertidorPro">
-    <meta property="og:description" content="Convierte imágenes PNG a JPG gratis. Reduce el tamaño hasta un 80% sin perder calidad.">
-    <meta property="og:image" content="https://ads2025-e4539.web.app/assets/images/og-png-jpg.png">
+    <meta property="og:url" content="https://pro-conversion.com/png-jpg.html">
+    <meta property="og:title" content="Convertir PNG a JPG Online Gratis - Pro Conversion">
+    <meta property="og:description"
+        content="Convierte imágenes PNG a JPG gratis. Reduce el tamaño hasta un 80% sin perder calidad.">
+    <meta property="og:image" content="https://pro-conversion.com/assets/images/og-png-jpg.png">
     <meta property="og:locale" content="es_ES">
-    
+
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Convertir PNG a JPG Online Gratis">
     <meta name="twitter:description" content="Convierte imágenes PNG a JPG gratis y online reduciendo el tamaño.">
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
+
     <link rel="stylesheet" href="css/variables.css">
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/layout.css">
     <link rel="stylesheet" href="css/componentes.css">
     <link rel="stylesheet" href="css/converters.css">
     <link rel="stylesheet" href="css/responsive.css">
-    
+
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2207512229687784"
-         crossorigin="anonymous"></script>
+        crossorigin="anonymous"></script>
+    <link rel="icon" href="assets/images/proConversionLogo.png" type="image/png">
+
+    <!-- i18next Libraries -->
+    <script src="https://unpkg.com/i18next/dist/umd/i18next.min.js"></script>
+    <script src="https://unpkg.com/i18next-http-backend/i18nextHttpBackend.min.js"></script>
+    <script
+        src="https://unpkg.com/i18next-browser-languagedetector/dist/umd/i18nextBrowserLanguageDetector.min.js"></script>
+
+    <!-- Prevent FOUC -->
+    <style>
+        body {
+            visibility: hidden;
+        }
+    </style>
 </head>
+
 <body>
     <script src="js/ad-visibility.js"></script>
     <header>
         <div class="container header-content">
-            <a href="/" style="font-weight: 800; font-size: 1.5rem; color: var(--color-primary);">ConvertidorPro</a>
+            <a href="/" style="font-weight: 800; font-size: 1.5rem; color: var(--color-primary);">Pro Conversion</a>
             <button class="mobile-menu-btn" aria-label="Abrir menú">☰</button>
             <nav class="nav-menu">
+                <select id="languageSwitcher" aria-label="Seleccionar idioma"
+                    style="margin-right: 15px; padding: 5px; border-radius: 4px;">
+                    <option value="es">Español</option>
+                    <option value="en">English</option>
+                </select>
                 <ul class="nav-list">
-                    <li><a href="/" class="nav-link">Inicio</a></li>
-                    <li><a href="/pages/herramienta" class="nav-link">Herramientas</a></li>
-                    <li><a href="/pages/contacto" class="nav-link">Contacto</a></li>
+                    <li><a href="/" class="nav-link" data-i18n="common.nav.home">Inicio</a></li>
+                    <li><a href="/pages/herramienta" class="nav-link" data-i18n="common.nav.tools">Herramientas</a></li>
+                    <li><a href="/pages/contacto" class="nav-link" data-i18n="common.nav.contact">Contacto</a></li>
                 </ul>
             </nav>
         </div>
@@ -64,31 +93,34 @@
 
     <div class="container page-layout">
         <main>
-            <h1>PNG → JPG</h1>
-            <p>Convierte tus imágenes de PNG a JPG reduciendo el tamaño de archivo.</p>
+            <h1 data-i18n="pages.png_jpg.h1">PNG → JPG</h1>
+            <p data-i18n="pages.png_jpg.subtitle">Convierte tus imágenes de PNG a JPG reduciendo el tamaño de archivo.
+            </p>
 
             <div class="ad-container ad-container--content">
-                <span style="color: #94a3b8; font-size: 0.8rem;">Publicidad</span>
+                <span style="color: #94a3b8; font-size: 0.8rem;" data-i18n="common.labels.advertising">Publicidad</span>
             </div>
 
-            <!-- Mensaje de privacidad/estado -->
+            <!-- Privacy/status message -->
             <div id="message-area" class="message-area"></div>
 
-            <!-- Input de archivo (fuera del drop-zone para evitar conflictos de DOM) -->
+            <!-- File input -->
             <input type="file" id="file-input" accept="image/png" class="file-input-hidden" style="display: none;">
 
-            <!-- Zona de carga -->
+            <!-- Drop zone -->
             <div class="card drop-zone" id="drop-zone">
                 <div class="drop-zone-icon">
-                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
                         <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
                         <circle cx="8.5" cy="8.5" r="1.5"></circle>
                         <polyline points="21 15 16 10 5 21"></polyline>
                     </svg>
                 </div>
-                <p class="drop-zone-text">Arrastra tu imagen PNG aquí</p>
-                <button class="btn btn--primary" id="select-btn">Seleccionar Archivo</button>
-                <p class="drop-zone-hint">Solo archivos PNG • Máximo 10 MB</p>
+                <p class="drop-zone-text" data-i18n="common.dropzone.drag_image_png">Arrastra tu imagen PNG aquí</p>
+                <button class="btn btn--primary" id="select-btn" data-i18n="common.buttons.select_file">Seleccionar
+                    Archivo</button>
+                <p class="drop-zone-hint" data-i18n="common.dropzone.hint_png">Solo archivos PNG • Máximo 10 MB</p>
             </div>
 
             <!-- Loader -->
@@ -96,59 +128,72 @@
                 <div class="loader-spinner"></div>
             </div>
 
-            <!-- Control de calidad -->
+            <!-- Quality control -->
             <div id="quality-control" class="control-group">
-                <label class="control-label">Calidad de compresión:</label>
+                <label class="control-label" data-i18n="common.labels.compression_quality">Calidad de
+                    compresión:</label>
                 <div style="display: flex; align-items: center; gap: 12px;">
                     <input type="range" id="quality-slider" class="quality-slider" min="10" max="100" value="80">
                     <span id="quality-value" class="quality-value">80%</span>
                 </div>
             </div>
 
-            <!-- Color de fondo -->
+            <!-- Background color -->
             <div id="bg-color-control" class="control-group">
-                <label class="control-label">Color de fondo (para transparencias):</label>
+                <label class="control-label" data-i18n="common.labels.bg_color_transparency">Color de fondo (para
+                    transparencias):</label>
                 <input type="color" id="bg-color-input" class="color-input" value="#ffffff">
-                <span style="font-size: 0.8rem; color: var(--color-text-light);">Las áreas transparentes se rellenarán con este color</span>
+                <span style="font-size: 0.8rem; color: var(--color-text-light);"
+                    data-i18n="common.labels.transparency_hint">Las áreas transparentes se rellenarán con este
+                    color</span>
             </div>
 
-            <!-- Contenedor de previews -->
+            <!-- Preview container -->
             <div id="preview-container" class="preview-container">
                 <div class="preview-row">
                     <div class="preview-box">
-                        <h3>Original (PNG)</h3>
-                        <img id="original-preview" class="preview-image" alt="Original">
+                        <h3 data-i18n="pages.png_jpg.original_label">Original (PNG)</h3>
+                        <img id="original-preview" class="preview-image" data-i18n-attr="alt:common.labels.original"
+                            alt="Original">
                         <div id="original-info" class="preview-info"></div>
                     </div>
                     <div class="preview-box">
-                        <h3>Resultado (JPG)</h3>
-                        <img id="result-preview" class="preview-image" alt="Resultado">
+                        <h3 data-i18n="pages.png_jpg.result_label">Resultado (JPG)</h3>
+                        <img id="result-preview" class="preview-image" data-i18n-attr="alt:common.labels.result"
+                            alt="Resultado">
                         <div id="result-info" class="preview-info"></div>
                     </div>
                 </div>
             </div>
 
-            <!-- Botones de acción -->
+            <!-- Action buttons -->
             <div class="action-buttons">
-                <button class="btn btn--primary" id="convert-btn">Convertir a JPG</button>
-                <button class="btn btn--primary" id="download-btn">Descargar JPG</button>
-                <button class="btn btn--secondary" id="reset-btn">Nueva Conversión</button>
+                <button class="btn btn--primary" id="convert-btn" data-i18n="common.buttons.convert_to_jpg">Convertir a
+                    JPG</button>
+                <button class="btn btn--primary" id="download-btn" data-i18n="common.buttons.download_jpg">Descargar
+                    JPG</button>
+                <button class="btn btn--secondary" id="reset-btn" data-i18n="common.buttons.new_conversion">Nueva
+                    Conversión</button>
             </div>
 
             <section style="margin-top: 40px;">
-                <h2>¿Por qué convertir PNG a JPG?</h2>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-top: 24px;">
+                <h2 data-i18n="pages.png_jpg.why_title">¿Por qué convertir PNG a JPG?</h2>
+                <div
+                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-top: 24px;">
                     <article class="card">
-                        <h3>Archivos Más Pequeños</h3>
-                        <p>JPG reduce el tamaño significativamente, ideal para compartir.</p>
+                        <h3 data-i18n="pages.png_jpg.reason_smaller_title">Archivos Más Pequeños</h3>
+                        <p data-i18n="pages.png_jpg.reason_smaller_desc">JPG reduce el tamaño significativamente, ideal
+                            para compartir.</p>
                     </article>
                     <article class="card">
-                        <h3>Mejor para Fotos</h3>
-                        <p>JPG está optimizado para imágenes fotográficas con muchos colores.</p>
+                        <h3 data-i18n="pages.png_jpg.reason_photos_title">Mejor para Fotos</h3>
+                        <p data-i18n="pages.png_jpg.reason_photos_desc">JPG está optimizado para imágenes fotográficas
+                            con muchos colores.</p>
                     </article>
                     <article class="card">
-                        <h3>Compatibilidad</h3>
-                        <p>JPG es soportado en cualquier dispositivo y navegador.</p>
+                        <h3 data-i18n="pages.png_jpg.reason_compatible_title">Compatibilidad</h3>
+                        <p data-i18n="pages.png_jpg.reason_compatible_desc">JPG es soportado en cualquier dispositivo y
+                            navegador.</p>
                     </article>
                 </div>
             </section>
@@ -156,7 +201,7 @@
 
         <aside style="padding-top: var(--spacing-xl);">
             <div class="ad-container ad-container--top">
-                <span style="color: #94a3b8; font-size: 0.8rem;">Publicidad</span>
+                <span style="color: #94a3b8; font-size: 0.8rem;" data-i18n="common.labels.advertising">Publicidad</span>
             </div>
         </aside>
     </div>
@@ -164,28 +209,33 @@
     <footer>
         <div class="container">
             <div class="ad-container ad-container--footer" style="margin: 0 auto 40px;">
-                <span style="color: #94a3b8; font-size: 0.8rem;">Publicidad</span>
+                <span style="color: #94a3b8; font-size: 0.8rem;" data-i18n="common.labels.advertising">Publicidad</span>
             </div>
             <div class="footer-grid">
                 <div>
-                    <h4 style="color: white;">ConvertidorPro</h4>
-                    <p style="font-size: 0.9rem; color: #cbd5e1;">Herramientas digitales simples.</p>
+                    <h4 style="color: white;">Pro Conversion</h4>
+                    <p style="font-size: 0.9rem; color: #cbd5e1;" data-i18n="common.footer.tagline_short">Herramientas
+                        digitales simples.</p>
                 </div>
                 <div>
-                    <h4 style="color: white;">Legal</h4>
+                    <h4 style="color: white;" data-i18n="common.footer.legal">Legal</h4>
                     <ul style="list-style: none;">
-                        <li><a href="/pages/privacidad" style="color: #cbd5e1;">Política de Privacidad</a></li>
-                        <li><a href="/pages/terminos" style="color: #cbd5e1;">Términos de Servicio</a></li>
+                        <li><a href="/pages/privacidad" style="color: #cbd5e1;"
+                                data-i18n="common.footer.privacy">Política de Privacidad</a></li>
+                        <li><a href="/pages/terminos" style="color: #cbd5e1;" data-i18n="common.footer.terms">Términos
+                                de Servicio</a></li>
                     </ul>
                 </div>
             </div>
-            <div style="text-align: center; border-top: 1px solid #334155; padding-top: 24px; color: #94a3b8; font-size: 0.875rem;">
-                &copy; 2025 ConvertidorPro.
+            <div
+                style="text-align: center; border-top: 1px solid #334155; padding-top: 24px; color: #94a3b8; font-size: 0.875rem;">
+                <span data-i18n="common.footer.copyright">&copy; 2025 Pro Conversion.</span>
             </div>
         </div>
     </footer>
 
     <script src="js/navegacion.js"></script>
+    <script src="/js/i18n-setup.js"></script>
     <script src="js/utils.js"></script>
     <script src="js/png-jpg-converter.js"></script>
     <script>
@@ -195,4 +245,5 @@
     </script>
     <script type="module" src="js/analytics.js"></script>
 </body>
+
 </html>

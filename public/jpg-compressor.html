@@ -1,62 +1,91 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Comprime imágenes JPG online gratis. Reduce el peso de tus fotos hasta un 90% con control de calidad ajustable. Herramienta 100% segura, sin subir archivos.">
-    <meta name="keywords" content="comprimir JPG, reducir tamaño JPG, optimizar imágenes, comprimir fotos online, reducir peso imagen, compresor JPG gratis">
-    <meta name="author" content="ConvertidorPro">
+    <meta name="description"
+        content="Comprime imágenes JPG online gratis. Reduce el peso de tus fotos hasta un 90% con control de calidad ajustable. Herramienta 100% segura, sin subir archivos.">
+    <meta name="keywords"
+        content="comprimir JPG, reducir tamaño JPG, optimizar imágenes, comprimir fotos online, reducir peso imagen, compresor JPG gratis">
+    <meta name="author" content="Pro Conversion">
     <meta name="robots" content="index, follow">
-    
+
     <!-- Google AdSense -->
     <meta name="google-adsense-account" content="ca-pub-2207512229687784">
-    
-    <title>Comprimir JPG Online Gratis - Reduce Peso sin Perder Calidad | ConvertidorPro</title>
-    
+
+    <!-- HREFLANG -->
+    <link rel="alternate" hreflang="es" href="https://pro-conversion.com/jpg-compressor?lng=es" />
+    <link rel="alternate" hreflang="en" href="https://pro-conversion.com/jpg-compressor?lng=en" />
+    <link rel="alternate" hreflang="x-default" href="https://pro-conversion.com/jpg-compressor" />
+
+    <title>Comprimir JPG Online Gratis - Reduce Peso sin Perder Calidad | Pro Conversion</title>
+
     <!-- Canonical URL -->
-    <link rel="canonical" href="https://ads2025-e4539.web.app/jpg-compressor.html">
-    
+    <link rel="canonical" href="https://pro-conversion.com/jpg-compressor.html">
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://ads2025-e4539.web.app/jpg-compressor.html">
-    <meta property="og:title" content="Comprimir JPG Online Gratis - ConvertidorPro">
-    <meta property="og:description" content="Comprime imágenes JPG reduciendo hasta un 90% el tamaño sin perder calidad visible.">
-    <meta property="og:image" content="https://ads2025-e4539.web.app/assets/images/og-compressor.png">
+    <meta property="og:url" content="https://pro-conversion.com/jpg-compressor.html">
+    <meta property="og:title" content="Comprimir JPG Online Gratis - Pro Conversion">
+    <meta property="og:description"
+        content="Comprime imágenes JPG reduciendo hasta un 90% el tamaño sin perder calidad visible.">
+    <meta property="og:image" content="https://pro-conversion.com/assets/images/og-compressor.png">
     <meta property="og:locale" content="es_ES">
-    
+
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Comprimir JPG Online Gratis">
     <meta name="twitter:description" content="Comprime imágenes JPG online reduciendo el peso hasta un 90%.">
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
+
     <link rel="stylesheet" href="css/variables.css">
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/layout.css">
     <link rel="stylesheet" href="css/componentes.css">
     <link rel="stylesheet" href="css/converters.css">
     <link rel="stylesheet" href="css/responsive.css">
-    
+
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2207512229687784"
-         crossorigin="anonymous"></script>
+        crossorigin="anonymous"></script>
+    <link rel="icon" href="assets/images/proConversionLogo.png" type="image/png">
+
+    <!-- i18next Libraries -->
+    <script src="https://unpkg.com/i18next/dist/umd/i18next.min.js"></script>
+    <script src="https://unpkg.com/i18next-http-backend/i18nextHttpBackend.min.js"></script>
+    <script
+        src="https://unpkg.com/i18next-browser-languagedetector/dist/umd/i18nextBrowserLanguageDetector.min.js"></script>
+
+    <!-- Prevent FOUC -->
+    <style>
+        body {
+            visibility: hidden;
+        }
+    </style>
 </head>
+
 <body>
     <script src="js/ad-visibility.js"></script>
     <header>
         <div class="container header-content">
-            <a href="/" style="font-weight: 800; font-size: 1.5rem; color: var(--color-primary);">ConvertidorPro</a>
+            <a href="/" style="font-weight: 800; font-size: 1.5rem; color: var(--color-primary);">Pro Conversion</a>
             <button class="mobile-menu-btn" aria-label="Abrir menú">☰</button>
             <nav class="nav-menu">
+                <select id="languageSwitcher" aria-label="Seleccionar idioma"
+                    style="margin-right: 15px; padding: 5px; border-radius: 4px;">
+                    <option value="es">Español</option>
+                    <option value="en">English</option>
+                </select>
                 <ul class="nav-list">
-                    <li><a href="/" class="nav-link">Inicio</a></li>
-                    <li><a href="/pages/herramienta" class="nav-link">Herramientas</a></li>
-                    <li><a href="/pages/contacto" class="nav-link">Contacto</a></li>
+                    <li><a href="/" class="nav-link" data-i18n="common.nav.home">Inicio</a></li>
+                    <li><a href="/pages/herramienta" class="nav-link" data-i18n="common.nav.tools">Herramientas</a></li>
+                    <li><a href="/pages/contacto" class="nav-link" data-i18n="common.nav.contact">Contacto</a></li>
                 </ul>
             </nav>
         </div>
@@ -64,31 +93,34 @@
 
     <div class="container page-layout">
         <main>
-            <h1>Compresor JPG</h1>
-            <p>Reduce el tamaño de tus imágenes JPG manteniendo excelente calidad visual.</p>
+            <h1 data-i18n="pages.jpg_compressor.h1">Compresor JPG</h1>
+            <p data-i18n="pages.jpg_compressor.subtitle">Reduce el tamaño de tus imágenes JPG manteniendo excelente
+                calidad visual.</p>
 
             <div class="ad-container ad-container--content">
-                <span style="color: #94a3b8; font-size: 0.8rem;">Publicidad</span>
+                <span style="color: #94a3b8; font-size: 0.8rem;" data-i18n="common.labels.advertising">Publicidad</span>
             </div>
 
-            <!-- Mensaje de privacidad/estado -->
+            <!-- Privacy/status message -->
             <div id="message-area" class="message-area"></div>
 
-            <!-- Input de archivo (fuera del drop-zone para evitar conflictos de DOM) -->
+            <!-- File input -->
             <input type="file" id="file-input" accept="image/*" class="file-input-hidden" style="display: none;">
 
-            <!-- Zona de carga -->
+            <!-- Drop zone -->
             <div class="card drop-zone" id="drop-zone">
                 <div class="drop-zone-icon">
-                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
                         <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                         <polyline points="7 10 12 15 17 10"></polyline>
                         <line x1="12" y1="15" x2="12" y2="3"></line>
                     </svg>
                 </div>
-                <p class="drop-zone-text">Arrastra tu imagen JPG aquí</p>
-                <button class="btn btn--primary" id="select-btn">Seleccionar Archivo</button>
-                <p class="drop-zone-hint">Solo archivos JPG/JPEG • Máximo 10 MB</p>
+                <p class="drop-zone-text" data-i18n="common.dropzone.drag_image_jpg">Arrastra tu imagen JPG aquí</p>
+                <button class="btn btn--primary" id="select-btn" data-i18n="common.buttons.select_file">Seleccionar
+                    Archivo</button>
+                <p class="drop-zone-hint" data-i18n="common.dropzone.hint_jpg">Solo archivos JPG/JPEG • Máximo 10 MB</p>
             </div>
 
             <!-- Loader -->
@@ -96,88 +128,105 @@
                 <div class="loader-spinner"></div>
             </div>
 
-            <!-- Control de calidad -->
+            <!-- Quality control -->
             <div id="quality-control" class="control-group">
-                <label class="control-label">Nivel de compresión:</label>
+                <label class="control-label" data-i18n="common.labels.compression_level">Nivel de compresión:</label>
                 <div style="display: flex; align-items: center; gap: 12px;">
-                    <span style="font-size: 0.8rem;">Más pequeño</span>
+                    <span style="font-size: 0.8rem;" data-i18n="common.labels.smaller">Más pequeño</span>
                     <input type="range" id="quality-slider" class="quality-slider" min="10" max="100" value="80">
-                    <span style="font-size: 0.8rem;">Mayor calidad</span>
+                    <span style="font-size: 0.8rem;" data-i18n="common.labels.higher_quality">Mayor calidad</span>
                     <span id="quality-value" class="quality-value">80%</span>
                 </div>
             </div>
 
-            <!-- Comparación de tamaños -->
+            <!-- Size comparison -->
             <div id="size-comparison" class="size-comparison"></div>
 
-            <!-- Contenedor de previews -->
+            <!-- Preview container -->
             <div id="preview-container" class="preview-container">
                 <div class="preview-row">
                     <div class="preview-box">
-                        <h3>Original</h3>
-                        <img id="original-preview" class="preview-image" alt="Original">
+                        <h3 data-i18n="common.labels.original">Original</h3>
+                        <img id="original-preview" class="preview-image" data-i18n-attr="alt:common.labels.original"
+                            alt="Original">
                         <div id="original-info" class="preview-info"></div>
                     </div>
                     <div class="preview-box">
-                        <h3>Comprimido</h3>
-                        <img id="result-preview" class="preview-image" alt="Comprimido">
+                        <h3 data-i18n="common.labels.compressed">Comprimido</h3>
+                        <img id="result-preview" class="preview-image" data-i18n-attr="alt:common.labels.compressed"
+                            alt="Comprimido">
                         <div id="result-info" class="preview-info"></div>
                     </div>
                 </div>
             </div>
 
-            <!-- Botones de acción -->
+            <!-- Action buttons -->
             <div class="action-buttons">
-                <button class="btn btn--primary" id="compress-btn">Comprimir</button>
-                <button class="btn btn--primary" id="download-btn">Descargar</button>
-                <button class="btn btn--secondary" id="reset-btn">Nueva Compresión</button>
+                <button class="btn btn--primary" id="compress-btn"
+                    data-i18n="common.buttons.compress">Comprimir</button>
+                <button class="btn btn--primary" id="download-btn"
+                    data-i18n="common.buttons.download">Descargar</button>
+                <button class="btn btn--secondary" id="reset-btn" data-i18n="common.buttons.new_compression">Nueva
+                    Compresión</button>
             </div>
 
             <section style="margin-top: 40px;">
-                <h2>Características</h2>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-top: 24px;">
+                <h2 data-i18n="pages.jpg_compressor.features_title">Características</h2>
+                <div
+                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-top: 24px;">
                     <article class="card">
-                        <h3>Control de Calidad</h3>
-                        <p>Ajusta el nivel de compresión para obtener el balance perfecto entre tamaño y calidad.</p>
+                        <h3 data-i18n="pages.jpg_compressor.feature_quality_title">Control de Calidad</h3>
+                        <p data-i18n="pages.jpg_compressor.feature_quality_desc">Ajusta el nivel de compresión para
+                            obtener el balance perfecto entre tamaño y calidad.</p>
                     </article>
                     <article class="card">
-                        <h3>Procesamiento Local</h3>
-                        <p>Tu imagen se procesa directamente en tu navegador, sin subir a servidores.</p>
+                        <h3 data-i18n="pages.jpg_compressor.feature_local_title">Procesamiento Local</h3>
+                        <p data-i18n="pages.jpg_compressor.feature_local_desc">Tu imagen se procesa directamente en tu
+                            navegador, sin subir a servidores.</p>
                     </article>
                     <article class="card">
-                        <h3>Resultados Instantáneos</h3>
-                        <p>Comprime múltiples imágenes rápidamente sin esperas.</p>
+                        <h3 data-i18n="pages.jpg_compressor.feature_instant_title">Resultados Instantáneos</h3>
+                        <p data-i18n="pages.jpg_compressor.feature_instant_desc">Comprime múltiples imágenes rápidamente
+                            sin esperas.</p>
                     </article>
                     <article class="card">
-                        <h3>100% Gratuito</h3>
-                        <p>Sin límites de tamaño ni requisitos de registro.</p>
+                        <h3 data-i18n="pages.jpg_compressor.feature_free_title">100% Gratuito</h3>
+                        <p data-i18n="pages.jpg_compressor.feature_free_desc">Sin límites de tamaño ni requisitos de
+                            registro.</p>
                     </article>
                     <article class="card">
-                        <h3>Descarga Inmediata</h3>
-                        <p>Descarga tu imagen comprimida al instante.</p>
+                        <h3 data-i18n="pages.jpg_compressor.feature_download_title">Descarga Inmediata</h3>
+                        <p data-i18n="pages.jpg_compressor.feature_download_desc">Descarga tu imagen comprimida al
+                            instante.</p>
                     </article>
                     <article class="card">
-                        <h3>Privacidad Garantizada</h3>
-                        <p>Tus imágenes nunca se guardan en nuestros servidores.</p>
+                        <h3 data-i18n="pages.jpg_compressor.feature_privacy_title">Privacidad Garantizada</h3>
+                        <p data-i18n="pages.jpg_compressor.feature_privacy_desc">Tus imágenes nunca se guardan en
+                            nuestros servidores.</p>
                     </article>
                 </div>
             </section>
 
             <section style="margin-top: 40px;">
-                <h2>¿Cuándo comprimir imágenes JPG?</h2>
+                <h2 data-i18n="pages.jpg_compressor.when_title">¿Cuándo comprimir imágenes JPG?</h2>
                 <ul style="margin-top: 20px; color: var(--color-text-light);">
-                    <li style="margin-bottom: 12px;">📱 Antes de compartir en redes sociales</li>
-                    <li style="margin-bottom: 12px;">📧 Para adjuntar en correos electrónicos</li>
-                    <li style="margin-bottom: 12px;">🌐 Para mejorar la velocidad de tu sitio web</li>
-                    <li style="margin-bottom: 12px;">💾 Para liberar espacio en disco o nube</li>
-                    <li style="margin-bottom: 12px;">📱 Para optimizar imágenes en aplicaciones</li>
+                    <li style="margin-bottom: 12px;" data-i18n="pages.jpg_compressor.when_social">📱 Antes de compartir
+                        en redes sociales</li>
+                    <li style="margin-bottom: 12px;" data-i18n="pages.jpg_compressor.when_email">📧 Para adjuntar en
+                        correos electrónicos</li>
+                    <li style="margin-bottom: 12px;" data-i18n="pages.jpg_compressor.when_web">🌐 Para mejorar la
+                        velocidad de tu sitio web</li>
+                    <li style="margin-bottom: 12px;" data-i18n="pages.jpg_compressor.when_storage">💾 Para liberar
+                        espacio en disco o nube</li>
+                    <li style="margin-bottom: 12px;" data-i18n="pages.jpg_compressor.when_apps">📱 Para optimizar
+                        imágenes en aplicaciones</li>
                 </ul>
             </section>
         </main>
 
         <aside style="padding-top: var(--spacing-xl);">
             <div class="ad-container ad-container--top">
-                <span style="color: #94a3b8; font-size: 0.8rem;">Publicidad</span>
+                <span style="color: #94a3b8; font-size: 0.8rem;" data-i18n="common.labels.advertising">Publicidad</span>
             </div>
         </aside>
     </div>
@@ -185,28 +234,33 @@
     <footer>
         <div class="container">
             <div class="ad-container ad-container--footer" style="margin: 0 auto 40px;">
-                <span style="color: #94a3b8; font-size: 0.8rem;">Publicidad</span>
+                <span style="color: #94a3b8; font-size: 0.8rem;" data-i18n="common.labels.advertising">Publicidad</span>
             </div>
             <div class="footer-grid">
                 <div>
-                    <h4 style="color: white;">ConvertidorPro</h4>
-                    <p style="font-size: 0.9rem; color: #cbd5e1;">Herramientas digitales simples.</p>
+                    <h4 style="color: white;">Pro Conversion</h4>
+                    <p style="font-size: 0.9rem; color: #cbd5e1;" data-i18n="common.footer.tagline_short">Herramientas
+                        digitales simples.</p>
                 </div>
                 <div>
-                    <h4 style="color: white;">Legal</h4>
+                    <h4 style="color: white;" data-i18n="common.footer.legal">Legal</h4>
                     <ul style="list-style: none;">
-                        <li><a href="/pages/privacidad" style="color: #cbd5e1;">Política de Privacidad</a></li>
-                        <li><a href="/pages/terminos" style="color: #cbd5e1;">Términos de Servicio</a></li>
+                        <li><a href="/pages/privacidad" style="color: #cbd5e1;"
+                                data-i18n="common.footer.privacy">Política de Privacidad</a></li>
+                        <li><a href="/pages/terminos" style="color: #cbd5e1;" data-i18n="common.footer.terms">Términos
+                                de Servicio</a></li>
                     </ul>
                 </div>
             </div>
-            <div style="text-align: center; border-top: 1px solid #334155; padding-top: 24px; color: #94a3b8; font-size: 0.875rem;">
-                &copy; 2025 ConvertidorPro.
+            <div
+                style="text-align: center; border-top: 1px solid #334155; padding-top: 24px; color: #94a3b8; font-size: 0.875rem;">
+                <span data-i18n="common.footer.copyright">&copy; 2025 Pro Conversion.</span>
             </div>
         </div>
     </footer>
 
     <script src="js/navegacion.js"></script>
+    <script src="/js/i18n-setup.js"></script>
     <script src="js/utils.js"></script>
     <script src="js/jpg-compressor.js"></script>
     <script>
@@ -216,4 +270,5 @@
     </script>
     <script type="module" src="js/analytics.js"></script>
 </body>
+
 </html>
